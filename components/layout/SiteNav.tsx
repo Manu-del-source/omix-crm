@@ -1,97 +1,78 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Zap, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 const NAV_LINKS = [
-  { label: "Features",  href: "/features"  },
-  { label: "Analytics", href: "/analytics" },
-  { label: "Pricing",   href: "/pricing"   },
-  { label: "Customers", href: "/customers" },
-  { label: "About",     href: "/about"     },
-  { label: "Contact",   href: "/contact"   },
+  { label: "Features", href: "/features" }, { label: "Pricing", href: "/pricing" },
+  { label: "About", href: "/about" }, { label: "Contact", href: "/contact" },
 ]
 
 export function SiteNav() {
   const path = usePathname()
-  const [past, setPast] = useState(false)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const h = () => setPast(window.scrollY > 40)
+    const h = () => setScrolled(window.scrollY > 40)
     window.addEventListener("scroll", h, { passive: true })
     return () => window.removeEventListener("scroll", h)
   }, [])
-
   useEffect(() => { setOpen(false) }, [path])
 
   return (
     <>
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        past || open ? "border-b border-white/[0.07] bg-[#0A0A0A]/90 backdrop-blur-2xl" : "bg-transparent"
+        scrolled || open ? "bg-white/90 backdrop-blur-lg border-b border-[rgba(0,0,0,0.06)]" : "bg-transparent"
       }`}>
-        <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between px-5 sm:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-[#FACC15]">
-              <Zap size={14} className="text-black" fill="black" />
+        <div className="mx-auto flex h-[64px] max-w-[1200px] items-center justify-between px-6">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#C73B2A]">
+              <span className="text-white text-[10px] font-bold">O</span>
             </span>
-            <span className="text-[15px] font-bold tracking-[-0.025em] text-white">Omix CRM</span>
+            <span className="text-[14px] font-semibold tracking-tight text-[#1C1917]">Omix</span>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-6 md:flex">
             {NAV_LINKS.map(l => (
               <Link key={l.href} href={l.href}
-                className={`rounded-lg px-3.5 py-2 text-[14px] font-medium transition-colors ${
+                className={`text-[13px] font-medium transition-colors ${
                   path === l.href || (l.href !== "/" && path.startsWith(l.href))
-                    ? "text-white" : "text-[#737373] hover:text-white"
-                }`}>
-                {l.label}
-              </Link>
+                    ? "text-[#C73B2A]" : "text-[#78716C] hover:text-[#1C1917]"
+                }`}>{l.label}</Link>
             ))}
+            <div className="flex items-center gap-3 ml-4 pl-4 border-l border-[rgba(0,0,0,0.06)]">
+              <Link href="/login" className="text-[13px] font-medium text-[#78716C] hover:text-[#1C1917] transition-colors">Sign in</Link>
+              <Link href="/signup" className="btn-primary text-[13px] px-5 py-2.5">Get Started</Link>
+            </div>
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <Link href="/login" className="rounded-lg px-4 py-2 text-[14px] font-medium text-[#737373] transition-colors hover:text-white">Sign in</Link>
-            <Link href="/signup">
-              <span className="inline-flex cursor-pointer rounded-full bg-[#FACC15] px-5 py-2.5 text-[13px] font-bold text-black shadow-md transition-shadow hover:shadow-lg">
-                Get Started
-              </span>
-            </Link>
-          </div>
-
           <button onClick={() => setOpen(o => !o)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] text-white lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-[rgba(0,0,0,0.08)] text-[#78716C] md:hidden"
             aria-label={open ? "Close" : "Menu"}>
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {open ? <X size={17} /> : <Menu size={17} />}
           </button>
         </div>
 
-        <AnimatePresence>
-          {open && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.25 }}
-              className="overflow-hidden border-t border-white/[0.07] bg-[#0A0A0A] lg:hidden">
-              <div className="space-y-1 px-5 py-4">
-                {NAV_LINKS.map(l => (
-                  <Link key={l.href} href={l.href}
-                    className={`flex items-center rounded-xl px-4 py-3 text-[15px] font-medium transition-colors ${
-                      path === l.href ? "bg-white/[0.06] text-white" : "text-[#A3A3A3] hover:text-white"
-                    }`}>
-                    {l.label}
-                  </Link>
-                ))}
-                <div className="mt-3 flex gap-3 border-t border-white/[0.07] pt-3">
-                  <Link href="/login" className="flex-1 rounded-xl border border-white/[0.1] py-3 text-center text-[14px] font-medium text-[#A3A3A3]">Sign in</Link>
-                  <Link href="/signup" className="flex-1 rounded-xl bg-[#FACC15] py-3 text-center text-[14px] font-bold text-black">Get Started</Link>
-                </div>
+        {open && (
+          <div className="border-t border-[rgba(0,0,0,0.06)] bg-white md:hidden">
+            <div className="space-y-1 px-6 py-4">
+              {NAV_LINKS.map(l => (
+                <Link key={l.href} href={l.href}
+                  className={`flex items-center rounded-lg px-3 py-2.5 text-[14px] font-medium transition-colors ${
+                    path === l.href ? "bg-[#FEF2F0] text-[#C73B2A]" : "text-[#78716C] hover:text-[#1C1917]"
+                  }`}>{l.label}</Link>
+              ))}
+              <div className="flex gap-3 pt-3 mt-3 border-t border-[rgba(0,0,0,0.06)]">
+                <Link href="/login" className="flex-1 rounded-lg border border-[rgba(0,0,0,0.08)] py-2.5 text-center text-[13px] font-medium text-[#78716C]">Sign in</Link>
+                <Link href="/signup" className="flex-1 rounded-lg bg-[#C73B2A] py-2.5 text-center text-[13px] font-medium text-white">Get Started</Link>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </div>
+          </div>
+        )}
       </header>
-      <div className="h-[68px]" />
+      <div className="h-[64px]" />
     </>
   )
 }

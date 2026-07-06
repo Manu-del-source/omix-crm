@@ -4,13 +4,13 @@ import { useParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { supabase } from "@/lib/supabase"
 import { toast } from "sonner"
-import { ArrowLeft, Building2, Mail, Phone, Calendar, Tag, Trash2, ExternalLink } from "lucide-react"
+import { ArrowLeft, Building2, Mail, Phone, Calendar, Tag, Trash2 } from "lucide-react"
 import Link from "next/link"
 
-const statusColors: Record<string, string> = {
-  New: "bg-blue-500/15 text-blue-400", Contacted: "bg-purple-500/15 text-purple-400",
-  Qualified: "bg-cyan-500/15 text-cyan-400", Proposal: "bg-amber-500/15 text-amber-400",
-  Won: "bg-green-500/15 text-green-400", Lost: "bg-red-500/15 text-red-400",
+const SC: Record<string, string> = {
+  New: "bg-blue-100 text-blue-600", Contacted: "bg-purple-100 text-purple-600",
+  Qualified: "bg-cyan-100 text-cyan-600", Proposal: "bg-amber-100 text-amber-600",
+  Won: "bg-green-100 text-green-600", Lost: "bg-red-100 text-red-600",
 }
 
 export default function LeadDetailPage() {
@@ -28,44 +28,40 @@ export default function LeadDetailPage() {
   }, [id, router])
 
   const deleteLead = async () => {
-    if (!confirm("Delete this lead permanently?")) return
+    if (!confirm("Delete permanently?")) return
     await supabase.from("leads").delete().eq("id", id)
-    toast.success("Lead deleted")
-    router.push("/leads")
+    toast.success("Deleted"); router.push("/leads")
   }
 
-  if (loading) return <div className="p-6 lg:p-8"><div className="h-8 w-64 skeleton mb-6" /><div className="h-64 skeleton" /></div>
+  if (loading) return <div className="p-6 lg:p-8"><div className="h-7 w-48 skeleton mb-4" /><div className="h-48 skeleton" /></div>
   if (!lead) return null
 
   return (
     <div className="p-6 lg:p-8 max-w-3xl">
-      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-        <Link href="/leads" className="inline-flex items-center gap-1.5 text-sm text-[#737373] hover:text-white transition mb-4">
-          <ArrowLeft size={15} /> Back to Leads
-        </Link>
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-amber-500/20 to-yellow-500/20 text-xl font-bold text-[#FACC15]">{lead.name?.[0]?.toUpperCase()}</div>
-            <div>
-              <h1 className="text-2xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{lead.name}</h1>
-              <span className={`mt-1.5 inline-block rounded-full px-3 py-1 text-xs font-medium ${statusColors[lead.status] || "bg-zinc-800 text-zinc-400"}`}>{lead.status}</span>
-            </div>
+      <Link href="/leads" className="inline-flex items-center gap-1 text-[13px] text-[#78716C] hover:text-[#1C1917] transition-colors mb-4">
+        <ArrowLeft size={14} /> Back to Leads
+      </Link>
+      <div className="flex items-start justify-between gap-4 mb-6">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FEF2F0] text-lg font-bold text-[#C73B2A]">{lead.name?.[0]?.toUpperCase()}</div>
+          <div>
+            <h1 className="text-xl font-semibold">{lead.name}</h1>
+            <span className={`mt-1 inline-block rounded px-2 py-0.5 text-[11px] font-medium ${SC[lead.status] || "bg-zinc-100 text-zinc-500"}`}>{lead.status}</span>
           </div>
-          <button onClick={deleteLead} className="flex items-center gap-2 rounded-xl border border-red-500/20 px-4 py-2.5 text-sm text-red-400 transition-all hover:bg-red-500/10"><Trash2 size={15} /> Delete</button>
         </div>
-      </motion.div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="card p-6 space-y-4">
-          <h2 className="text-sm font-semibold text-[#A3A3A3] uppercase tracking-wider">Contact Info</h2>
-          {lead.email && <div className="flex items-center gap-3 text-sm"><Mail size={15} className="text-[#525252]" /><span>{lead.email}</span></div>}
-          {lead.phone && <div className="flex items-center gap-3 text-sm"><Phone size={15} className="text-[#525252]" /><span>{lead.phone}</span></div>}
-          {lead.company && <div className="flex items-center gap-3 text-sm"><Building2 size={15} className="text-[#525252]" /><span>{lead.company}</span></div>}
+        <button onClick={deleteLead} className="flex items-center gap-1.5 rounded-lg border border-red-200 px-3.5 py-2 text-[12px] font-medium text-red-600 transition-all hover:bg-red-50"><Trash2 size={13} /> Delete</button>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="card p-5 space-y-3">
+          <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[#A8A29E]">Contact</h2>
+          {lead.email && <div className="flex items-center gap-2.5 text-[13px]"><Mail size={14} className="text-[#A8A29E]" /><span>{lead.email}</span></div>}
+          {lead.phone && <div className="flex items-center gap-2.5 text-[13px]"><Phone size={14} className="text-[#A8A29E]" /><span>{lead.phone}</span></div>}
+          {lead.company && <div className="flex items-center gap-2.5 text-[13px]"><Building2 size={14} className="text-[#A8A29E]" /><span>{lead.company}</span></div>}
         </div>
-        <div className="card p-6 space-y-4">
-          <h2 className="text-sm font-semibold text-[#A3A3A3] uppercase tracking-wider">Details</h2>
-          <div className="flex items-center gap-3 text-sm"><Tag size={15} className="text-[#525252]" /><span>Status: <strong>{lead.status}</strong></span></div>
-          <div className="flex items-center gap-3 text-sm"><Calendar size={15} className="text-[#525252]" /><span>Created: {new Date(lead.created_at).toLocaleDateString()}</span></div>
+        <div className="card p-5 space-y-3">
+          <h2 className="text-[11px] font-semibold uppercase tracking-wider text-[#A8A29E]">Details</h2>
+          <div className="flex items-center gap-2.5 text-[13px]"><Tag size={14} className="text-[#A8A29E]" /><span>Status: <strong>{lead.status}</strong></span></div>
+          <div className="flex items-center gap-2.5 text-[13px]"><Calendar size={14} className="text-[#A8A29E]" /><span>Created: {new Date(lead.created_at).toLocaleDateString()}</span></div>
         </div>
       </div>
     </div>
