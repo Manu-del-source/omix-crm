@@ -40,28 +40,28 @@ export default function HomePage() {
       <SiteNav />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28">
+      <section className="relative overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-20">
         <div className="grid-bg pointer-events-none absolute inset-0" />
         <div className="mx-auto max-w-[1200px] px-6">
-          <div className="max-w-[640px]">
+          <div className="max-w-[600px]">
             <motion.span initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: E }}
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#FEF2F0] px-3.5 py-1.5 text-[12px] font-medium text-[#C73B2A]">
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#FEF2F0] px-3 py-1 text-[11px] font-medium text-[#C73B2A]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#C73B2A]" />
               Built for African businesses
             </motion.span>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1, ease: E }}
-              className="mt-6 h1">
+              className="mt-5 h1">
               Close more deals.<br />
               <span className="text-[#C73B2A]">Move faster.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2, ease: E }}
-              className="mt-5 body-lg max-w-[440px]">
+              className="mt-4 body-lg max-w-[420px]">
               The modern CRM built for African sales teams. Track every lead, automate follow-ups, and win more business.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.3, ease: E }}
-              className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/signup" className="btn-primary">Start Free Today <ArrowRight size={16} /></Link>
-              <Link href="/features" className="btn-secondary">See Features</Link>
+              className="mt-6 flex flex-wrap items-center gap-3">
+              <Link href="/signup" className="btn-primary text-[13px] px-5 py-2.5">Start Free Today <ArrowRight size={15} /></Link>
+              <Link href="/features" className="btn-secondary text-[13px] px-5 py-2.5">See Features</Link>
             </motion.div>
           </div>
           {/* Decorative element */}
@@ -80,9 +80,9 @@ export default function HomePage() {
       </section>
 
       {/* Trust Strip */}
-      <div className="border-y border-[rgba(0,0,0,0.04)] bg-white py-6">
-        <p className="mb-4 text-center text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E]">Trusted by teams across East Africa</p>
-        <div className="marquee flex w-max gap-12">
+      <div className="border-y border-[rgba(0,0,0,0.04)] bg-white py-5">
+        <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-wider text-[#A8A29E]">Trusted by teams across East Africa</p>
+        <div className="marquee flex w-max gap-10">
           {[...["Northbridge Realty", "Highlands Sacco", "Westfield Logistics", "Two Rivers Holdings", "Coastline Retailers", "Riverside Motors", "Solid Rock Insurance", "Apex Agencies", "Savanna Fintech", "Acacia Agro Traders"], ...["Northbridge Realty", "Highlands Sacco", "Westfield Logistics", "Two Rivers Holdings", "Coastline Retailers", "Riverside Motors", "Solid Rock Insurance", "Apex Agencies", "Savanna Fintech", "Acacia Agro Traders"]].map((n, i) => (
             <span key={i} className="shrink-0 text-[12px] font-medium text-[#A8A29E]">{n}</span>
           ))}
@@ -92,21 +92,21 @@ export default function HomePage() {
       {/* Features */}
       <section className="section">
         <Container>
-          <motion.div {...fadeUp} className="mb-12">
-            <p className="section-label mb-3">Features</p>
+          <motion.div {...fadeUp} className="mb-8">
+            <p className="section-label mb-2">Features</p>
             <h2 className="h2 max-w-[400px]">Built to close more deals</h2>
-            <p className="mt-3 body-lg max-w-[360px]">Six capabilities that make the biggest difference to your team.</p>
+            <p className="mt-2 body-lg max-w-[360px]">Six capabilities that make the biggest difference to your team.</p>
           </motion.div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((c, i) => (
               <motion.div key={c.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05, ease: E }} whileHover={{ y: -3 }}
-                className="card p-7">
-                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FEF2F0]">
-                  <c.icon size={18} className="text-[#C73B2A]" />
+                className="card p-5">
+                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#FEF2F0]">
+                  <c.icon size={16} className="text-[#C73B2A]" />
                 </div>
-                <h3 className="text-[15px] font-semibold text-[#1C1917]">{c.title}</h3>
-                <p className="mt-1.5 text-[14px] leading-relaxed text-[#78716C]">{c.desc}</p>
+                <h3 className="text-[14px] font-semibold text-[#1C1917]">{c.title}</h3>
+                <p className="mt-1 text-[13px] leading-relaxed text-[#78716C]">{c.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -116,20 +116,20 @@ export default function HomePage() {
       {/* Testimonials */}
       <section className="section bg-white border-t border-[rgba(0,0,0,0.04)]">
         <Container>
-          <motion.div {...fadeUp} className="mb-12 text-center">
-            <p className="section-label mb-3">Customers</p>
+          <motion.div {...fadeUp} className="mb-8 text-center">
+            <p className="section-label mb-2">Customers</p>
             <h2 className="h2">Trusted by teams across Kenya</h2>
           </motion.div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
               <motion.div key={t.i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: E }} whileHover={{ y: -3 }}
-                className="card flex flex-col p-7">
-                <div className="mb-4 flex gap-1">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={12} className="fill-[#C73B2A]/20 text-[#C73B2A]" />)}</div>
-                <p className="flex-1 text-[14px] leading-relaxed text-[#78716C]">&ldquo;{t.q}&rdquo;</p>
-                <div className="mt-5 flex items-center gap-3 border-t border-[rgba(0,0,0,0.04)] pt-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FEF2F0] text-[11px] font-semibold text-[#C73B2A]">{t.i}</div>
-                  <div><p className="text-[13px] font-semibold text-[#1C1917]">{t.name}</p><p className="text-[11px] text-[#A8A29E]">{t.role}</p></div>
+                className="card flex flex-col p-5">
+                <div className="mb-3 flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={11} className="fill-[#C73B2A]/20 text-[#C73B2A]" />)}</div>
+                <p className="flex-1 text-[13px] leading-relaxed text-[#78716C]">&ldquo;{t.q}&rdquo;</p>
+                <div className="mt-4 flex items-center gap-2.5 border-t border-[rgba(0,0,0,0.04)] pt-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FEF2F0] text-[10px] font-semibold text-[#C73B2A]">{t.i}</div>
+                  <div><p className="text-[12px] font-semibold text-[#1C1917]">{t.name}</p><p className="text-[11px] text-[#A8A29E]">{t.role}</p></div>
                 </div>
               </motion.div>
             ))}
@@ -141,8 +141,8 @@ export default function HomePage() {
       <section className="section">
         <Container>
           <div className="mx-auto max-w-[720px]">
-            <motion.div {...fadeUp} className="mb-10 text-center">
-              <p className="section-label mb-3">FAQ</p>
+            <motion.div {...fadeUp} className="mb-8 text-center">
+              <p className="section-label mb-2">FAQ</p>
               <h2 className="h2">Questions, answered</h2>
             </motion.div>
             <div className="divide-y divide-[rgba(0,0,0,0.04)]">
@@ -151,14 +151,14 @@ export default function HomePage() {
                 return (
                   <div key={f.q}>
                     <button type="button" onClick={() => setFaqOpen(isOpen ? null : i)}
-                      className="flex w-full items-center justify-between gap-6 py-5 text-left" aria-expanded={isOpen}>
-                      <span className={`text-[15px] font-medium transition-colors ${isOpen ? "text-[#1C1917]" : "text-[#78716C]"}`}>{f.q}</span>
+                      className="flex w-full items-center justify-between gap-6 py-4 text-left" aria-expanded={isOpen}>
+                      <span className={`text-[14px] font-medium transition-colors ${isOpen ? "text-[#1C1917]" : "text-[#78716C]"}`}>{f.q}</span>
                       <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.2 }}
-                        className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-all ${isOpen ? "border-[#C73B2A]/30 bg-[#FEF2F0] text-[#C73B2A]" : "border-[rgba(0,0,0,0.08)] text-[#A8A29E]"}`}>
-                        <Plus size={13} />
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border transition-all ${isOpen ? "border-[#C73B2A]/30 bg-[#FEF2F0] text-[#C73B2A]" : "border-[rgba(0,0,0,0.08)] text-[#A8A29E]"}`}>
+                        <Plus size={11} />
                       </motion.span>
                     </button>
-                    {isOpen && <p className="pb-5 text-[14px] leading-relaxed text-[#78716C]">{f.a}</p>}
+                    {isOpen && <p className="pb-4 text-[13px] leading-relaxed text-[#78716C]">{f.a}</p>}
                   </div>
                 )
               })}
