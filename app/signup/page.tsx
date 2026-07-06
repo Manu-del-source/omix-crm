@@ -79,17 +79,16 @@ export default function SignupPage() {
           transition={{ duration: 10, repeat: Infinity, delay: 2, ease: "easeInOut" }}
           className="absolute -bottom-48 left-1/4 h-[500px] w-[500px] rounded-full bg-[#FACC15]/10 blur-[100px]"
         />
-        <div className="grid-bg absolute inset-0 opacity-30" />
+        <div className="grid-bg absolute inset-0 opacity-25" />
       </div>
 
       <motion.div
         initial={{ opacity: 0, y: 24, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.5, ease: E }}
-        className="relative w-full max-w-md"
+        className="relative w-full max-w-[420px]"
       >
-        {/* Card */}
-        <div className="rounded-3xl border border-white/[0.08] bg-[#0D0D0D]/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-2xl sm:p-10">
+        <div className="rounded-3xl border border-white/[0.08] bg-[#0D0D0D]/80 p-8 shadow-2xl shadow-black/50 backdrop-blur-2xl sm:p-10">
           {/* Logo */}
           <div className="mb-8 text-center">
             <Link href="/" className="mb-4 inline-flex items-center gap-2.5">
@@ -104,7 +103,7 @@ export default function SignupPage() {
               </span>
             </Link>
             <h1 className="text-2xl font-bold text-white">Create your account</h1>
-            <p className="mt-1.5 text-[15px] text-[#A3A3A3]">
+            <p className="mt-1.5 text-[15px] leading-relaxed text-[#A3A3A3]">
               Start managing leads in minutes
             </p>
           </div>
@@ -139,7 +138,7 @@ export default function SignupPage() {
             </div>
           </div>
 
-          <form onSubmit={signUp} className="space-y-5">
+          <form onSubmit={signUp} className="mt-5 space-y-5">
             {/* Email */}
             <div className="space-y-1.5">
               <label htmlFor="email" className="text-[13px] font-medium text-[#A3A3A3]">
@@ -148,7 +147,7 @@ export default function SignupPage() {
               <div className="relative">
                 <Mail
                   size={16}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#525252]"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#525252] pointer-events-none"
                 />
                 <input
                   id="email"
@@ -171,7 +170,7 @@ export default function SignupPage() {
               <div className="relative">
                 <Lock
                   size={16}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#525252]"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-[#525252] pointer-events-none"
                 />
                 <input
                   id="password"
@@ -247,13 +246,7 @@ export default function SignupPage() {
           </form>
 
           {/* Sign in link */}
-          <div className="relative my-8">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-white/[0.06]" />
-            </div>
-          </div>
-
-          <p className="text-center text-[14px] text-[#737373]">
+          <p className="mt-8 text-center text-[14px] text-[#737373]">
             Already have an account?{" "}
             <Link
               href="/login"

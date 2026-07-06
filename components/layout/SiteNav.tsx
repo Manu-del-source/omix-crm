@@ -6,33 +6,32 @@ import { useState, useEffect } from "react"
 import { Zap, Menu, X } from "lucide-react"
 
 const NAV_LINKS = [
-  { label:"Features",  href:"/features"  },
-  { label:"Analytics", href:"/analytics" },
-  { label:"Pricing",   href:"/pricing"   },
-  { label:"Customers", href:"/customers" },
-  { label:"About",     href:"/about"     },
-  { label:"Contact",   href:"/contact"   },
+  { label: "Features",  href: "/features"  },
+  { label: "Analytics", href: "/analytics" },
+  { label: "Pricing",   href: "/pricing"   },
+  { label: "Customers", href: "/customers" },
+  { label: "About",     href: "/about"     },
+  { label: "Contact",   href: "/contact"   },
 ]
 
 export function SiteNav() {
-  const path    = usePathname()
-  const [past,  setPast]  = useState(false)
-  const [open,  setOpen]  = useState(false)
+  const path = usePathname()
+  const [past, setPast] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const h = () => setPast(window.scrollY > 40)
-    window.addEventListener("scroll", h, { passive:true })
+    window.addEventListener("scroll", h, { passive: true })
     return () => window.removeEventListener("scroll", h)
   }, [])
 
   // Close mobile menu on route change
   useEffect(() => {
-    const t = setTimeout(() => setOpen(false), 0)
-    return () => clearTimeout(t)
+    setOpen(false)
   }, [path])
 
-  const isActive = (href:string) =>
-    href==="/" ? path==="/" : path.startsWith(href)
+  const isActive = (href: string) =>
+    href === "/" ? path === "/" : path.startsWith(href)
 
   return (
     <>
@@ -45,7 +44,7 @@ export function SiteNav() {
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center gap-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-[8px] bg-[#FACC15]">
-              <Zap size={14} className="text-black" fill="black"/>
+              <Zap size={14} className="text-black" fill="black" />
             </span>
             <span className="text-[15px] font-bold tracking-[-0.025em] text-white">Omix CRM</span>
           </Link>
@@ -71,7 +70,7 @@ export function SiteNav() {
               Sign in
             </Link>
             <Link href="/signup">
-              <motion.span whileHover={{scale:1.03}} whileTap={{scale:0.97}}
+              <motion.span whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                 className="inline-flex cursor-pointer rounded-full bg-[#FACC15] px-5 py-2.5 text-[13px] font-bold text-black shadow-md shadow-[#FACC15]/15 transition-shadow hover:shadow-lg hover:shadow-[#FACC15]/25">
                 Get Started
               </motion.span>
@@ -79,10 +78,10 @@ export function SiteNav() {
           </div>
 
           {/* Mobile hamburger */}
-          <button type="button" onClick={() => setOpen(o=>!o)}
+          <button type="button" onClick={() => setOpen(o => !o)}
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.04] text-white lg:hidden"
-            aria-label="Toggle menu">
-            {open ? <X size={18}/> : <Menu size={18}/>}
+            aria-label={open ? "Close menu" : "Open menu"}>
+            {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
@@ -90,10 +89,10 @@ export function SiteNav() {
         <AnimatePresence>
           {open && (
             <motion.div
-              initial={{opacity:0,height:0}}
-              animate={{opacity:1,height:"auto"}}
-              exit={{opacity:0,height:0}}
-              transition={{duration:0.25,ease:[0.25,0.1,0.25,1]}}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
               className="overflow-hidden border-t border-white/[0.07] bg-[#0A0A0A] lg:hidden">
               <div className="mx-auto max-w-[1280px] space-y-1 px-5 py-4">
                 {NAV_LINKS.map(l => (
@@ -102,7 +101,7 @@ export function SiteNav() {
                       isActive(l.href) ? "bg-white/[0.06] text-white" : "text-[#A3A3A3] hover:text-white"
                     }`}>
                     {l.label}
-                    {isActive(l.href) && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#FACC15]"/>}
+                    {isActive(l.href) && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#FACC15]" />}
                   </Link>
                 ))}
                 <div className="mt-3 flex items-center gap-3 border-t border-white/[0.07] pt-3">
@@ -121,7 +120,7 @@ export function SiteNav() {
         </AnimatePresence>
       </header>
       {/* Spacer */}
-      <div className="h-[68px]"/>
+      <div className="h-[68px]" />
     </>
   )
 }

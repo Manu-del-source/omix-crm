@@ -6,24 +6,24 @@ import { ArrowRight, Play } from "lucide-react"
 import { StatCounter } from "@/components/ui/StatCounter"
 import { ParallaxCard } from "@/components/ui/ParallaxCard"
 
-const E=[0.16,1,0.3,1] as const
-const STATS=[
-  {end:10000,suffix:"+",prefix:"",label:"Leads tracked"},
-  {end:4.2,suffix:"M",prefix:"KES ",label:"Pipeline value"},
-  {end:380,suffix:"+",prefix:"",label:"Active teams"},
-  {end:99.9,suffix:"%",prefix:"",label:"Uptime"},
+const E = [0.16, 1, 0.3, 1] as const
+const STATS = [
+  { end: 10000, suffix: "+", prefix: "", label: "Leads tracked" },
+  { end: 4.2, suffix: "M", prefix: "KES ", label: "Pipeline value" },
+  { end: 380, suffix: "+", prefix: "", label: "Active teams" },
+  { end: 99.9, suffix: "%", prefix: "", label: "Uptime" },
 ]
 
 /* ── Compact dashboard preview ── */
-function Dashboard(){
-  const bars=[40,62,35,78,53,95,74]
-  const leads=[
-    {i:"JO",n:"James Odhiambo",  s:"Hot",  c:"text-red-400 bg-red-500/10"},
-    {i:"GW",n:"Grace Wanjiku",    s:"Warm", c:"text-amber-400 bg-amber-500/10"},
-    {i:"SW",n:"Susan Waweru",     s:"Hot",  c:"text-red-400 bg-red-500/10"},
-    {i:"DM",n:"David Mwangi",     s:"New",  c:"text-zinc-400 bg-zinc-500/10"},
+function Dashboard() {
+  const bars = [40, 62, 35, 78, 53, 95, 74]
+  const leads = [
+    { i: "JO", n: "James Odhiambo",  s: "Hot",  c: "text-red-400 bg-red-500/10" },
+    { i: "GW", n: "Grace Wanjiku",    s: "Warm", c: "text-amber-400 bg-amber-500/10" },
+    { i: "SW", n: "Susan Waweru",     s: "Hot",  c: "text-red-400 bg-red-500/10" },
+    { i: "DM", n: "David Mwangi",     s: "New",  c: "text-zinc-400 bg-zinc-500/10" },
   ]
-  return(
+  return (
     <div className="overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#111] shadow-[0_40px_100px_rgba(0,0,0,.8)]">
       {/* chrome */}
       <div className="flex items-center gap-1.5 border-b border-white/[.05] bg-[#0d0d0d] px-4 py-3">
@@ -75,67 +75,80 @@ function Dashboard(){
   )
 }
 
-export function Hero(){
-  const ref=useRef<HTMLDivElement>(null)
-  const {scrollYProgress}=useScroll({target:ref,offset:["start start","end start"]})
-  const y=useTransform(scrollYProgress,[0,1],[0,70])
-  const op=useTransform(scrollYProgress,[0,.55],[1,0])
-  return(
+export function Hero() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
+  const y = useTransform(scrollYProgress, [0, 1], [0, 70])
+  const op = useTransform(scrollYProgress, [0, .55], [1, 0])
+  return (
     <section ref={ref} className="relative flex min-h-screen flex-col items-center overflow-hidden pb-0 pt-24 sm:pt-32">
-      <div className="grid-bg pointer-events-none absolute inset-0"/>
+      <div className="grid-bg pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0"
-        style={{background:"radial-gradient(ellipse 80% 55% at 50% 0%,transparent 25%,#0A0A0A 80%)"}}/>
+        style={{ background: "radial-gradient(ellipse 80% 55% at 50% 0%, transparent 25%, #0A0A0A 80%)" }} />
       <div className="animate-breathe pointer-events-none absolute left-1/2 top-[-60px] h-[420px] w-[420px] -translate-x-1/2"
-        style={{background:"radial-gradient(circle,rgba(250,204,21,.11) 0%,transparent 70%)"}}/>
+        style={{ background: "radial-gradient(circle, rgba(250,204,21,.11) 0%, transparent 70%)" }} />
 
       <div className="relative z-10 mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <div className="flex flex-col items-center text-center">
           {/* Badge */}
-          <motion.span initial={{opacity:0,y:-10}} animate={{opacity:1,y:0}}
-            transition={{duration:.5,ease:E}}
-            className="inline-flex items-center gap-2 rounded-full border border-white/[.09] bg-white/[.04] px-4 py-1.5 text-[13px] font-medium text-[#A3A3A3]">
-            <span className="h-[7px] w-[7px] rounded-full bg-[#FACC15]"/>
+          <motion.span
+            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: .5, ease: E }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/[.09] bg-white/[.04] px-4 py-1.5 text-[13px] font-medium text-[#A3A3A3]"
+          >
+            <span className="relative flex h-[7px] w-[7px]">
+              <span className="absolute inset-0 animate-ping rounded-full bg-[#FACC15]/40" />
+              <span className="relative h-full w-full rounded-full bg-[#FACC15]" />
+            </span>
             CRM built for African businesses
           </motion.span>
 
           {/* Headline */}
-          <motion.h1 initial={{opacity:0,y:24}} animate={{opacity:1,y:0}}
-            transition={{duration:.75,delay:.1,ease:E}}
-            className="mt-8 max-w-[720px] text-[clamp(2.6rem,7vw,4.75rem)] font-extrabold leading-[1.05] tracking-[-0.045em] text-white">
-            Close more deals.<br/>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: .75, delay: .1, ease: E }}
+            className="mt-8 max-w-[720px] heading-xl text-white"
+          >
+            Close more deals.<br />
             <span className="text-[#FACC15]">Move faster.</span>
           </motion.h1>
 
           {/* Sub */}
-          <motion.p initial={{opacity:0,y:18}} animate={{opacity:1,y:0}}
-            transition={{duration:.7,delay:.2,ease:E}}
-            className="mt-6 max-w-[480px] text-[18px] leading-[1.75] text-[#A3A3A3]">
+          <motion.p
+            initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: .7, delay: .2, ease: E }}
+            className="mt-6 max-w-[480px] text-[17px] leading-[1.75] text-[#A3A3A3] sm:text-[18px]"
+          >
             The modern CRM built for African sales teams. Track every lead, automate follow-ups, and win more business.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div initial={{opacity:0,y:14}} animate={{opacity:1,y:0}}
-            transition={{duration:.65,delay:.3,ease:E}}
-            className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: .65, delay: .3, ease: E }}
+            className="mt-9 flex flex-wrap items-center justify-center gap-4"
+          >
             <Link href="/signup">
-              <motion.span whileHover={{scale:1.035}} whileTap={{scale:.965}}
+              <motion.span whileHover={{ scale: 1.035 }} whileTap={{ scale: .965 }}
                 className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#FACC15] px-7 py-4 text-[15px] font-bold text-black shadow-lg shadow-[#FACC15]/20 transition-shadow hover:shadow-[#FACC15]/35">
-                Start Free Today <ArrowRight size={17}/>
+                Start Free Today <ArrowRight size={17} />
               </motion.span>
             </Link>
             <Link href="/features"
               className="inline-flex items-center gap-2 rounded-full border border-white/[.11] bg-white/[.04] px-7 py-4 text-[15px] font-semibold text-[#A3A3A3] transition-all hover:border-white/[.2] hover:text-white">
-              <Play size={15} className="text-[#737373]"/> Watch demo
+              <Play size={15} className="text-[#737373]" /> Watch demo
             </Link>
           </motion.div>
 
           {/* Stats */}
-          <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.5,duration:.6}}
-            className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-14">
-            {STATS.map(s=>(
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: .5, duration: .6 }}
+            className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 sm:gap-x-14"
+          >
+            {STATS.map(s => (
               <div key={s.label} className="text-center">
                 <div className="text-[clamp(1.4rem,2.8vw,1.9rem)] font-extrabold tracking-[-0.04em] text-white">
-                  <StatCounter end={s.end} suffix={s.suffix} prefix={s.prefix}/>
+                  <StatCounter end={s.end} suffix={s.suffix} prefix={s.prefix} />
                 </div>
                 <div className="mt-1 text-[12px] text-[#525252]">{s.label}</div>
               </div>
@@ -143,16 +156,17 @@ export function Hero(){
           </motion.div>
         </div>
 
-        {/* Dashboard */}
+        {/* Dashboard preview */}
         <motion.div
-          initial={{opacity:0,y:56,scale:.95}} animate={{opacity:1,y:0,scale:1}}
-          transition={{duration:1,delay:.55,ease:E}}
-          style={{y,opacity:op}}
-          className="relative mt-14 animate-float">
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-[#0A0A0A] to-transparent"/>
+          initial={{ opacity: 0, y: 56, scale: .95 }} animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: .55, ease: E }}
+          style={{ y, opacity: op }}
+          className="relative mt-14 animate-float"
+        >
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
           <div className="pointer-events-none absolute -inset-3 rounded-3xl"
-            style={{background:"radial-gradient(ellipse 55% 35% at 50% 110%,rgba(250,204,21,.08),transparent)"}}/>
-          <ParallaxCard><Dashboard/></ParallaxCard>
+            style={{ background: "radial-gradient(ellipse 55% 35% at 50% 110%, rgba(250,204,21,.08), transparent)" }} />
+          <ParallaxCard><Dashboard /></ParallaxCard>
         </motion.div>
       </div>
     </section>
