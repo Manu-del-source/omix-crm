@@ -35,7 +35,7 @@ function StatCard({
   return (
     <motion.div
       variants={fadeUp}
-      className="card-lift rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+      className="card-lift rounded-2xl border border-white/[0.06] bg-[#111111] p-6"
     >
       <div className="flex items-center justify-between">
         <div className={`rounded-xl p-2 ${color}`}>
@@ -59,7 +59,7 @@ function StatCard({
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload?.length) {
     return (
-      <div className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-sm shadow-xl">
+      <div className="rounded-xl border border-white/[0.06] bg-zinc-900 px-4 py-3 text-sm shadow-xl">
         <p className="font-medium text-white">{label}</p>
         <p className="text-orange-400">{payload[0].value} leads</p>
       </div>
@@ -109,7 +109,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black p-6">
+      <div className="min-h-screen bg-[#0A0A0A] p-6">
         <div className="mb-8 h-8 w-48 skeleton" />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {[...Array(4)].map((_, i) => (
@@ -122,7 +122,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ export default function DashboardPage() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+        className="mt-8 rounded-2xl border border-white/[0.06] bg-[#111111] p-6"
       >
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <div>

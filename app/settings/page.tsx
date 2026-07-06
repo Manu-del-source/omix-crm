@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabase"
 import { toast } from "sonner"
 import { Settings, User, Mail, Lock, Shield, Loader2, CheckCircle } from "lucide-react"
 
-const inputCls = "w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none transition focus:border-orange-400/60 placeholder:text-zinc-600"
+const inputCls = "w-full rounded-xl border border-white/[0.06] bg-[#0A0A0A]/30 px-4 py-3 text-sm text-white outline-none transition focus:border-orange-400/60 placeholder:text-zinc-600"
 
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 const fadeUp = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0, 0, 0.2, 1] as [number, number, number, number] } } }
@@ -38,7 +38,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <h1 className="flex items-center gap-3 text-3xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
           <Settings size={28} className="text-orange-400" /> Settings
@@ -48,14 +48,14 @@ export default function SettingsPage() {
 
       <motion.div variants={stagger} initial="hidden" animate="show" className="mx-auto max-w-2xl space-y-6">
         {/* Account Info */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+        <motion.div variants={fadeUp} className="rounded-2xl border border-white/[0.06] bg-[#111111] p-6">
           <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             <User size={18} className="text-blue-400" /> Account Info
           </h2>
           <div className="space-y-4">
             <div>
               <label className="mb-2 block text-sm text-zinc-400">Email Address</label>
-              <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/30 px-4 py-3">
+              <div className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-[#0A0A0A]/30 px-4 py-3">
                 <Mail size={15} className="text-zinc-600" />
                 <span className="text-sm text-zinc-300">{email || "—"}</span>
                 <CheckCircle size={15} className="ml-auto text-green-400" />
@@ -63,7 +63,7 @@ export default function SettingsPage() {
             </div>
             <div>
               <label className="mb-2 block text-sm text-zinc-400">User ID</label>
-              <div className="rounded-xl border border-white/10 bg-black/30 px-4 py-3">
+              <div className="rounded-xl border border-white/[0.06] bg-[#0A0A0A]/30 px-4 py-3">
                 <span className="text-xs text-zinc-600 font-mono">{user?.id || "—"}</span>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function SettingsPage() {
         </motion.div>
 
         {/* Business */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+        <motion.div variants={fadeUp} className="rounded-2xl border border-white/[0.06] bg-[#111111] p-6">
           <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             <Shield size={18} className="text-orange-400" /> Business Profile
           </h2>
@@ -92,7 +92,7 @@ export default function SettingsPage() {
         </motion.div>
 
         {/* Security */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+        <motion.div variants={fadeUp} className="rounded-2xl border border-white/[0.06] bg-[#111111] p-6">
           <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             <Lock size={18} className="text-purple-400" /> Security
           </h2>
@@ -114,7 +114,7 @@ export default function SettingsPage() {
         </motion.div>
 
         {/* Danger Zone */}
-        <motion.div variants={fadeUp} className="rounded-2xl border border-red-500/20 bg-red-500/5 p-6 backdrop-blur-xl">
+        <motion.div variants={fadeUp} className="rounded-2xl border border-red-500/20 bg-red-500/5 p-6">
           <h2 className="mb-4 text-lg font-semibold text-red-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Danger Zone
           </h2>

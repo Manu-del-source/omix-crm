@@ -73,6 +73,17 @@ input:focus:not(:focus-visible) {
 .marquee { animation: marquee 32s linear infinite; }
 .tab-in { animation: tab-in 0.35s ease both; }
 
+/* ── Skeleton loading ── */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* ── Shared input style (login/signup) ── */
 .input-glass {
   width: 100%;

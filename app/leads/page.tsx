@@ -66,7 +66,7 @@ export default function LeadsPage() {
   }, [search, status, leads])
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
@@ -87,7 +87,7 @@ export default function LeadsPage() {
         <div className="flex gap-3">
           <Link
             href="/pipeline"
-            className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium transition hover:bg-white/10"
+            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-[#111111] px-5 py-3 text-sm font-medium transition hover:bg-white/10"
           >
             Pipeline View <ChevronRight size={15} />
           </Link>
@@ -113,7 +113,7 @@ export default function LeadsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name, company or email…"
-            className="w-full rounded-xl border border-white/10 bg-white/5 py-4 pl-11 pr-4 text-sm outline-none backdrop-blur-xl transition focus:border-orange-400/50"
+            className="w-full rounded-xl border border-white/[0.06] bg-[#111111] py-4 pl-11 pr-4 text-sm outline-none transition focus:border-orange-400/50"
           />
         </div>
         <div className="relative">
@@ -121,7 +121,7 @@ export default function LeadsPage() {
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full appearance-none rounded-xl border border-white/10 bg-white/5 py-4 pl-11 pr-4 text-sm outline-none backdrop-blur-xl transition focus:border-orange-400/50"
+            className="w-full appearance-none rounded-xl border border-white/[0.06] bg-[#111111] py-4 pl-11 pr-4 text-sm outline-none transition focus:border-orange-400/50"
           >
             {statuses.map((s) => (
               <option key={s} value={s} className="bg-zinc-900">
@@ -146,7 +146,7 @@ export default function LeadsPage() {
             className={`rounded-full border px-4 py-1.5 text-xs font-medium transition ${
               status === s
                 ? "border-orange-500/50 bg-orange-500/20 text-orange-400"
-                : "border-white/10 bg-white/5 text-zinc-400 hover:border-white/20 hover:text-white"
+                : "border-white/[0.06] bg-[#111111] text-zinc-400 hover:border-white/20 hover:text-white"
             }`}
           >
             {s}
@@ -174,7 +174,7 @@ export default function LeadsPage() {
                 <motion.div key={lead.id} variants={cardAnim} layout>
                   <Link
                     href={`/leads/${lead.id}`}
-                    className="card-lift group block rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:border-orange-500/40"
+                    className="card-lift group block rounded-2xl border border-white/[0.06] bg-[#111111] p-6 transition hover:border-orange-500/40"
                   >
                     <div className="flex items-start justify-between">
                       <div className="min-w-0 flex-1">

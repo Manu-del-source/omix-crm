@@ -22,7 +22,7 @@ export default function ClientsPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <h1 className="text-3xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
           Clients
@@ -51,7 +51,7 @@ export default function ClientsPage() {
           {clients.map((c) => (
             <motion.div key={c.id} variants={card}>
               <Link href={`/leads/${c.id}`}
-                className="card-lift group block rounded-2xl border border-green-500/20 bg-green-500/5 p-6 backdrop-blur-xl transition hover:border-green-400/40">
+                className="card-lift group block rounded-2xl border border-green-500/20 bg-green-500/5 p-6 transition hover:border-green-400/40">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-500/20 text-lg font-bold text-green-400">

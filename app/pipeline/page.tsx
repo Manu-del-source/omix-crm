@@ -66,7 +66,7 @@ export default function PipelinePage() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
         className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
@@ -96,9 +96,9 @@ export default function PipelinePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: colIdx * 0.06 }}
-                  className={`rounded-2xl border ${cfg.bg} backdrop-blur-xl`}
+                  className={`rounded-2xl border ${cfg.bg}`}
                 >
-                  <div className="p-4 border-b border-white/10">
+                  <div className="p-4 border-b border-white/[0.06]">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className={`h-2 w-2 rounded-full ${cfg.dot} live-dot`} />
@@ -115,7 +115,7 @@ export default function PipelinePage() {
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`min-h-[200px] space-y-3 p-3 transition-colors ${snapshot.isDraggingOver ? "bg-white/5" : ""}`}
+                        className={`min-h-[200px] space-y-3 p-3 transition-colors ${snapshot.isDraggingOver ? "bg-[#111111]" : ""}`}
                       >
                         {columns[stage]?.map((lead, idx) => (
                           <Draggable draggableId={String(lead.id)} index={idx} key={lead.id}>
@@ -124,7 +124,7 @@ export default function PipelinePage() {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`group rounded-xl border border-white/10 bg-black/60 p-3 backdrop-blur-xl transition ${
+                                className={`group rounded-xl border border-white/[0.06] bg-[#0A0A0A]/60 p-3 transition ${
                                   snapshot.isDragging ? "shadow-lg shadow-orange-500/10 border-orange-500/30 scale-105" : "hover:border-orange-500/30"
                                 }`}
                               >

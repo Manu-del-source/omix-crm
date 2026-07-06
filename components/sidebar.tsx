@@ -39,7 +39,7 @@ export default function Sidebar() {
   const SidebarContent = () => (
     <div className="flex h-full flex-col">
       {/* Logo */}
-      <div className="border-b border-white/10 p-6">
+      <div className="border-b border-white/[0.06] p-6">
         <h1
           className="text-2xl font-bold"
           style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -93,7 +93,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="border-t border-white/10 p-3">
+      <div className="border-t border-white/[0.06] p-3">
         <button
           onClick={logout}
           className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm text-zinc-500 transition hover:bg-red-500/10 hover:text-red-400"
@@ -111,7 +111,7 @@ export default function Sidebar() {
       <motion.button
         whileTap={{ scale: 0.92 }}
         onClick={() => setOpen(!open)}
-        className="fixed left-4 top-4 z-50 rounded-xl border border-white/10 bg-black/80 p-3 backdrop-blur-xl lg:hidden"
+        className="fixed left-4 top-4 z-50 rounded-xl border border-white/[0.06] bg-[#0A0A0A]/80 p-3  lg:hidden"
       >
         <AnimatePresence mode="wait">
           {open ? (
@@ -134,13 +134,13 @@ export default function Sidebar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setOpen(false)}
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-[#0A0A0A]/60 backdrop-blur-sm lg:hidden"
           />
         )}
       </AnimatePresence>
 
       {/* Desktop sidebar */}
-      <aside className="hidden w-64 shrink-0 border-r border-white/10 bg-black/80 backdrop-blur-xl lg:block">
+      <aside className="hidden w-64 shrink-0 border-r border-white/[0.06] bg-[#0A0A0A]/80  lg:block">
         <SidebarContent />
       </aside>
 
@@ -152,7 +152,7 @@ export default function Sidebar() {
             animate={{ x: 0 }}
             exit={{ x: -280 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed left-0 top-0 z-50 h-screen w-64 border-r border-white/10 bg-black/95 backdrop-blur-xl lg:hidden"
+            className="fixed left-0 top-0 z-50 h-screen w-64 border-r border-white/[0.06] bg-[#0A0A0A]/95  lg:hidden"
           >
             <SidebarContent />
           </motion.aside>

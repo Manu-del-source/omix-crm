@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   if (checking) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black">
+      <div className="flex min-h-screen items-center justify-center bg-[#0A0A0A]">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: [0, 0, 1, 1] as [number, number, number, number] }}
@@ -30,7 +30,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   return (
-    <div className="flex min-h-screen bg-black text-white">
+    <div className="flex min-h-screen bg-[#0A0A0A] text-white">
       <Sidebar />
       <main className="flex-1 overflow-auto">
         <motion.div

@@ -40,7 +40,7 @@ export default function NewLeadPage() {
     setForm((f) => ({ ...f, [k]: e.target.value }))
 
   const inputCls =
-    "rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none backdrop-blur-xl transition focus:border-orange-400/60 placeholder:text-zinc-600 w-full"
+    "rounded-xl border border-white/[0.06] bg-[#111111] px-4 py-3 text-sm text-white outline-none transition focus:border-orange-400/60 placeholder:text-zinc-600 w-full"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -59,7 +59,7 @@ export default function NewLeadPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <Link href="/leads" className="mb-4 flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white">
           <ArrowLeft size={15} /> Back to Leads
@@ -75,7 +75,7 @@ export default function NewLeadPage() {
         variants={stagger}
         initial="hidden"
         animate="show"
-        className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+        className="mx-auto max-w-xl rounded-2xl border border-white/[0.06] bg-[#111111] p-8"
       >
         <div className="grid gap-5">
           <Field label="Full Name *" icon={User}>
@@ -109,7 +109,7 @@ export default function NewLeadPage() {
           </motion.button>
           <Link
             href="/leads"
-            className="flex items-center justify-center rounded-xl border border-white/10 px-6 py-3 text-sm text-zinc-400 transition hover:bg-white/10 hover:text-white"
+            className="flex items-center justify-center rounded-xl border border-white/[0.06] px-6 py-3 text-sm text-zinc-400 transition hover:bg-white/10 hover:text-white"
           >
             Cancel
           </Link>

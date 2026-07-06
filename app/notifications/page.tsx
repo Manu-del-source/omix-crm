@@ -35,7 +35,7 @@ export default function NotificationsPage() {
   const done = tasks.filter((t) => t.completed)
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
+    <div className="min-h-screen bg-[#0A0A0A] p-6 text-white">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
         className="mb-8 flex items-center justify-between">
         <div>
@@ -45,7 +45,7 @@ export default function NotificationsPage() {
           <p className="mt-2 text-zinc-400">CRM activity, reminders, and overdue tasks</p>
         </div>
         <motion.button whileTap={{ scale: 0.93 }} onClick={fetch}
-          className="flex items-center gap-2 rounded-xl border border-white/10 px-4 py-2 text-sm text-zinc-400 transition hover:bg-white/10 hover:text-white">
+          className="flex items-center gap-2 rounded-xl border border-white/[0.06] px-4 py-2 text-sm text-zinc-400 transition hover:bg-white/10 hover:text-white">
           <RefreshCw size={15} /> Refresh
         </motion.button>
       </motion.div>
@@ -60,7 +60,7 @@ export default function NotificationsPage() {
         ].map((s) => {
           const Icon = s.icon
           return (
-            <div key={s.label} className={`card-lift rounded-2xl border ${s.bg} p-5 backdrop-blur-xl`}>
+            <div key={s.label} className={`card-lift rounded-2xl border ${s.bg} p-5`}>
               <div className="flex items-center justify-between">
                 <Icon size={20} className={s.color} />
                 <span className={`text-3xl font-bold ${s.color}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -76,7 +76,7 @@ export default function NotificationsPage() {
       <div className="grid gap-6 xl:grid-cols-2">
         {/* Tasks */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
-          className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+          className="rounded-2xl border border-white/[0.06] bg-[#111111] p-6">
           <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             <Bell size={18} className="text-orange-400" /> Task Reminders
           </h2>
@@ -95,7 +95,7 @@ export default function NotificationsPage() {
                         ? "border-green-500/20 bg-green-500/5"
                         : isOverdue
                         ? "border-red-500/20 bg-red-500/5"
-                        : "border-white/10 bg-zinc-900/60"}`}>
+                        : "border-white/[0.06] bg-zinc-900/60"}`}>
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex items-center gap-3 min-w-0">
                           {task.completed
@@ -135,7 +135,7 @@ export default function NotificationsPage() {
 
         {/* Recent Leads */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-          className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+          className="rounded-2xl border border-white/[0.06] bg-[#111111] p-6">
           <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             <User size={18} className="text-blue-400" /> Recent Leads
           </h2>
@@ -145,7 +145,7 @@ export default function NotificationsPage() {
             <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-3">
               {recentLeads.map((lead) => (
                 <motion.div key={lead.id} variants={item}
-                  className="flex items-center justify-between rounded-xl border border-white/10 bg-zinc-900/60 p-4">
+                  className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-zinc-900/60 p-4">
                   <div className="flex items-center gap-3 min-w-0">
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/30 to-blue-500/30 text-sm font-semibold">
                       {lead.name?.[0]?.toUpperCase()}
