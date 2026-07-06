@@ -40,7 +40,7 @@ export default function HomePage() {
       <SiteNav />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pt-24 pb-14 sm:pt-28 sm:pb-20">
+      <section className="relative overflow-hidden pt-20 pb-10 sm:pt-24 sm:pb-14">
         <div className="grid-bg pointer-events-none absolute inset-0" />
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="max-w-[600px]">
