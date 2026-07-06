@@ -31,10 +31,10 @@ export default function DashboardPage() {
 
   const conv = stats.totalLeads > 0 ? ((stats.wonDeals / stats.totalLeads) * 100).toFixed(1) : "0.0"
   const cards = [
-    { icon: Users, label: "Total Leads", value: stats.totalLeads, color: "bg-blue-100 text-blue-600" },
-    { icon: CheckCircle, label: "Won Deals", value: stats.wonDeals, color: "bg-green-100 text-green-600" },
-    { icon: XCircle, label: "Lost Deals", value: stats.lostDeals, color: "bg-red-100 text-red-600" },
-    { icon: ClipboardList, label: "Active Tasks", value: stats.tasks, color: "bg-amber-100 text-amber-600" },
+    { icon: Users, label: "Total Leads", value: stats.totalLeads, color: "bg-gradient-to-br from-blue-500 to-blue-600 text-white" },
+    { icon: CheckCircle, label: "Won Deals", value: stats.wonDeals, color: "bg-gradient-to-br from-green-500 to-green-600 text-white" },
+    { icon: XCircle, label: "Lost Deals", value: stats.lostDeals, color: "bg-gradient-to-br from-red-500 to-red-600 text-white" },
+    { icon: ClipboardList, label: "Active Tasks", value: stats.tasks, color: "bg-gradient-to-br from-amber-500 to-amber-600 text-white" },
   ]
 
   if (loading) return (

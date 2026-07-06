@@ -20,10 +20,10 @@ export default function Sidebar() {
   return (
     <aside className="flex min-h-screen w-60 flex-col border-r border-[rgba(0,0,0,0.06)] bg-white max-lg:hidden">
       <div className="flex items-center gap-2 border-b border-[rgba(0,0,0,0.06)] px-5 py-4">
-        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#C73B2A]">
+        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
           <span className="text-white text-[10px] font-bold">O</span>
         </span>
-        <span className="text-[14px] font-semibold text-[#1C1917]">Omix</span>
+        <span className="text-[14px] font-bold text-[#1C1917]">Omix</span>
       </div>
       <nav className="flex-1 space-y-0.5 px-3 py-4">
         {links.map(l => {
@@ -32,7 +32,7 @@ export default function Sidebar() {
           return (
             <Link key={l.href} href={l.href}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all ${
-                active ? "bg-[#FEF2F0] text-[#C73B2A]" : "text-[#78716C] hover:bg-[#FAF8F5] hover:text-[#1C1917]"
+                active ? "bg-gradient-to-r from-[#C73B2A]/10 to-transparent text-[#C73B2A] border-r-2 border-[#C73B2A]" : "text-[#78716C] hover:bg-[#FAF8F5] hover:text-[#1C1917]"
               }`}>
               <Icon size={17} /> {l.name}
             </Link>

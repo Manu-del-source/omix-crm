@@ -48,10 +48,10 @@ export default function SignupPage() {
         <div className="rounded-2xl border border-[rgba(0,0,0,0.06)] bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:p-10">
           <div className="mb-8 text-center">
             <Link href="/" className="mb-4 inline-flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-md bg-[#C73B2A]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
                 <span className="text-white text-[11px] font-bold">O</span>
               </span>
-              <span className="text-[15px] font-semibold tracking-tight text-[#1C1917]">Omix</span>
+              <span className="text-[14px] font-bold text-[#1C1917]">Omix</span>
             </Link>
             <h1 className="mt-5 text-xl font-semibold text-[#1C1917]">Create your account</h1>
             <p className="mt-1 text-[14px] text-[#78716C]">Start managing leads in minutes</p>
@@ -109,7 +109,7 @@ export default function SignupPage() {
               )}
             </div>
             <button type="submit" disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#C73B2A] py-3 text-[14px] font-medium text-white transition-all hover:opacity-90 disabled:opacity-50">
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#C73B2A] to-[#E85D3A] py-3 text-[14px] font-medium text-white shadow-lg shadow-[#C73B2A]/20 transition-all hover:shadow-xl disabled:opacity-50">
               {loading ? <Loader2 size={16} className="animate-spin" /> : <><UserPlus size={16} /> Create Account</>}
             </button>
           </form>

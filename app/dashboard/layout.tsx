@@ -29,10 +29,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex min-h-screen bg-[#F8F6F3] text-[#1C1917]">
       <div className="fixed inset-x-0 top-0 z-50 flex h-12 items-center justify-between border-b border-[rgba(0,0,0,0.06)] bg-white px-4 lg:hidden">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded bg-[#C73B2A]">
+          <span className="flex h-6 w-6 items-center justify-center rounded bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
             <span className="text-white text-[9px] font-bold">O</span>
           </span>
-          <span className="text-[13px] font-semibold text-[#1C1917]">Omix</span>
+          <span className="text-[13px] font-bold text-[#1C1917]">Omix</span>
         </Link>
         <button onClick={() => setMobileOpen(!mobileOpen)}
           className="flex h-8 w-8 items-center justify-center rounded-lg border border-[rgba(0,0,0,0.08)] text-[#78716C]">

@@ -28,7 +28,7 @@ export function SiteNav() {
       }`}>
         <div className="mx-auto flex h-[52px] max-w-[1200px] items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-1.5">
-            <span className="flex h-5 w-5 items-center justify-center rounded bg-[#C73B2A]">
+            <span className="flex h-5 w-5 items-center justify-center rounded bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
               <span className="text-white text-[8px] font-bold">O</span>
             </span>
             <span className="text-[13px] font-semibold text-[#1C1917]">Omix</span>
@@ -44,7 +44,7 @@ export function SiteNav() {
             ))}
             <div className="flex items-center gap-2 ml-3 pl-3 border-l border-[rgba(0,0,0,0.06)]">
               <Link href="/login" className="text-[12px] font-medium text-[#78716C] hover:text-[#1C1917]">Sign in</Link>
-              <Link href="/signup" className="rounded-md bg-[#C73B2A] px-3.5 py-1.5 text-[12px] font-medium text-white hover:opacity-90 transition-opacity">Get Started</Link>
+              <Link href="/signup" className="rounded-md bg-gradient-to-r from-[#C73B2A] to-[#E85D3A] px-3.5 py-1.5 text-[12px] font-medium text-white hover:opacity-90 transition-opacity shadow-sm">Get Started</Link>
             </div>
           </nav>
 
