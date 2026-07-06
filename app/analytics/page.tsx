@@ -1,171 +1,103 @@
-"use client"
+'use client'
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts"
-import { SiteNav }      from "@/components/layout/SiteNav"
-import { SiteFooter }   from "@/components/layout/SiteFooter"
-import { PageHero }     from "@/components/ui/PageHero"
-import { Container }    from "@/components/ui/Container"
+import { SiteNav } from "@/components/layout/SiteNav"
+import { SiteFooter } from "@/components/layout/SiteFooter"
+import { PageHero } from "@/components/ui/PageHero"
+import { Container } from "@/components/ui/Container"
 import { SectionLabel } from "@/components/ui/SectionLabel"
 import { TrendingUp, ArrowRight, BarChart3, Target, DollarSign, Clock } from "lucide-react"
 
-const E=[0.16,1,0.3,1] as const
-const s={hidden:{},show:{transition:{staggerChildren:.09}}}
-const it={hidden:{opacity:0,y:24},show:{opacity:1,y:0,transition:{duration:.65,ease:E}}}
+const E = [0.16, 1, 0.3, 1] as const
+const s = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
+const it = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: E } } }
 
-const DATA=[
-  {m:"Jan",r:320,l:42},{m:"Feb",r:410,l:55},{m:"Mar",r:380,l:48},
-  {m:"Apr",r:520,l:67},{m:"May",r:490,l:61},{m:"Jun",r:680,l:84},{m:"Jul",r:750,l:92},
+const DATA = [{ m: "Jan", r: 320, l: 42 }, { m: "Feb", r: 410, l: 55 }, { m: "Mar", r: 380, l: 48 }, { m: "Apr", r: 520, l: 67 }, { m: "May", r: 490, l: 61 }, { m: "Jun", r: 680, l: 84 }, { m: "Jul", r: 750, l: 92 }]
+const METRICS = [
+  { icon: DollarSign, label: "Total Revenue", value: "KES 4.2M", change: "+18.4%" },
+  { icon: Target, label: "Conversion Rate", value: "68%", change: "+5.2%" },
+  { icon: BarChart3, label: "Avg Deal Size", value: "KES 110K", change: "+12.1%" },
+  { icon: Clock, label: "Sales Cycle", value: "12 days", change: "-3 days" },
 ]
-const METRICS=[
-  {icon:DollarSign,label:"Total Revenue",   value:"KES 4.2M",change:"+18.4%"},
-  {icon:Target,    label:"Conversion Rate", value:"68%",      change:"+5.2%"},
-  {icon:BarChart3, label:"Avg Deal Size",   value:"KES 110K", change:"+12.1%"},
-  {icon:Clock,     label:"Sales Cycle",     value:"12 days",  change:"−3 days"},
-]
-
-function Tip({active,payload,label}:{active?:boolean;payload?:{value:number}[];label?:string}) {
-  if(!active||!payload?.length)return null
-  return (
-    <div className="rounded-[10px] border border-white/[0.08] bg-[#181818] px-3.5 py-2.5 shadow-xl">
-      <p className="text-[11px] text-[#A3A3A3]">{label}</p>
-      <p className="mt-0.5 font-mono text-[13px] font-bold text-white">KES {(payload[0].value/1000).toFixed(0)}K</p>
-    </div>
-  )
-}
 
 export default function AnalyticsPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#0A0A0A] text-white">
-      <SiteNav/>
+      <SiteNav />
       <PageHero label="Analytics" heading="Data that drives decisions"
         sub="Live revenue charts, conversion funnels, and win-rate trends — all updating in real time as your team closes deals.">
-        <Link href="/signup" className="inline-flex items-center gap-2 rounded-full bg-[#FACC15] px-7 py-3.5 text-[15px] font-bold text-black shadow-lg shadow-[#FACC15]/20">
-          Start Free <ArrowRight size={16}/>
-        </Link>
+        <Link href="/signup" className="btn-primary">Start Free <ArrowRight size={16} /></Link>
       </PageHero>
 
-      {/* Key metrics */}
-      <section className="border-t border-white/[0.06] py-20">
+      <section className="section border-t border-white/[0.06]">
         <Container>
-          <motion.div variants={s} initial="hidden" whileInView="show" viewport={{once:true}}
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {METRICS.map(m=>(
-              <motion.div key={m.label} variants={it}
-                className="rounded-[18px] border border-white/[0.06] bg-[#111111] p-6 transition-all hover:border-white/[0.1] hover:bg-[#171717]">
-                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-[9px] bg-[#FACC15]/10">
-                  <m.icon size={18} className="text-[#FACC15]"/>
-                </div>
+          <motion.div variants={s} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {METRICS.map(m => (
+              <motion.div key={m.label} variants={it} className="card p-6 hover:shadow-md">
+                <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-[9px] bg-[#FACC15]/10"><m.icon size={18} className="text-[#FACC15]" /></div>
                 <p className="text-[13px] text-[#737373]">{m.label}</p>
-                <p className="mt-1.5 text-[26px] font-extrabold tracking-[-0.04em] text-white">{m.value}</p>
-                <div className="mt-2 flex items-center gap-1.5">
-                  <TrendingUp size={12} className="text-[#FACC15]"/>
-                  <span className="text-[12px] font-bold text-[#FACC15]">{m.change}</span>
-                </div>
+                <p className="mt-1.5 text-[26px] font-extrabold tracking-tight text-white">{m.value}</p>
+                <div className="mt-2 flex items-center gap-1.5"><TrendingUp size={12} className="text-[#FACC15]" /><span className="text-[12px] font-bold text-[#FACC15]">{m.change}</span></div>
               </motion.div>
             ))}
           </motion.div>
         </Container>
       </section>
 
-      {/* Charts */}
-      <section className="border-t border-white/[0.06] py-20 sm:py-24">
+      <section className="section border-t border-white/[0.06]">
         <Container>
           <div className="grid gap-6 lg:grid-cols-2">
-            <motion.div initial={{opacity:0,x:-28}} whileInView={{opacity:1,x:0}} viewport={{once:true}}
-              transition={{duration:.65,ease:E}}
-              className="rounded-[20px] border border-white/[0.06] bg-[#111111] p-6">
+            <motion.div initial={{ opacity: 0, x: -28 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, ease: E }} className="card p-6">
               <div className="mb-5 flex items-center justify-between">
-                <div>
-                  <SectionLabel>Revenue</SectionLabel>
-                  <h3 className="mt-2 text-[18px] font-bold text-white">Monthly Revenue</h3>
-                </div>
+                <div><SectionLabel>Revenue</SectionLabel><h3 className="mt-2 text-[18px] font-bold text-white">Monthly Revenue</h3></div>
                 <span className="rounded-full border border-[#FACC15]/15 bg-[#FACC15]/[0.07] px-3 py-1 text-[11px] font-bold text-[#FACC15]">+18.4% YoY</span>
               </div>
               <ResponsiveContainer width="100%" height={200}>
-                <AreaChart data={DATA} margin={{top:4,right:4,left:-24,bottom:0}}>
-                  <defs>
-                    <linearGradient id="gY" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%"  stopColor="#FACC15" stopOpacity={0.18}/>
-                      <stop offset="95%" stopColor="#FACC15" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false}/>
-                  <XAxis dataKey="m" tick={{fill:"#404040",fontSize:10}} axisLine={false} tickLine={false}/>
-                  <YAxis tick={{fill:"#404040",fontSize:10}} axisLine={false} tickLine={false} tickFormatter={(v:number)=>`${(v/1000).toFixed(0)}K`}/>
-                  <Tooltip content={<Tip/>}/>
-                  <Area type="monotone" dataKey="r" stroke="#FACC15" strokeWidth={2} fill="url(#gY)" dot={false} activeDot={{r:4,fill:"#FACC15",stroke:"#0A0A0A",strokeWidth:2}}/>
+                <AreaChart data={DATA} margin={{ top: 4, right: 4, left: -24, bottom: 0 }}>
+                  <defs><linearGradient id="gY" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#FACC15" stopOpacity={0.18} /><stop offset="95%" stopColor="#FACC15" stopOpacity={0} /></linearGradient></defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                  <XAxis dataKey="m" tick={{ fill: "#404040", fontSize: 10 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "#404040", fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `${(v / 1000).toFixed(0)}K`} />
+                  <Tooltip contentStyle={{ background: "#181818", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 10, color: "#fff" }} />
+                  <Area type="monotone" dataKey="r" stroke="#FACC15" strokeWidth={2} fill="url(#gY)" dot={false} activeDot={{ r: 4, fill: "#FACC15", stroke: "#0A0A0A", strokeWidth: 2 }} />
                 </AreaChart>
               </ResponsiveContainer>
             </motion.div>
-
-            <motion.div initial={{opacity:0,x:28}} whileInView={{opacity:1,x:0}} viewport={{once:true}}
-              transition={{duration:.65,ease:E}}
-              className="rounded-[20px] border border-white/[0.06] bg-[#111111] p-6">
+            <motion.div initial={{ opacity: 0, x: 28 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, ease: E }} className="card p-6">
               <div className="mb-5 flex items-center justify-between">
-                <div>
-                  <SectionLabel>Pipeline</SectionLabel>
-                  <h3 className="mt-2 text-[18px] font-bold text-white">New Leads / Month</h3>
-                </div>
+                <div><SectionLabel>Pipeline</SectionLabel><h3 className="mt-2 text-[18px] font-bold text-white">New Leads / Month</h3></div>
                 <span className="rounded-full border border-white/[0.07] bg-white/[0.04] px-3 py-1 text-[11px] text-[#A3A3A3]">92 this month</span>
               </div>
               <ResponsiveContainer width="100%" height={200}>
-                <BarChart data={DATA} margin={{top:4,right:4,left:-24,bottom:0}} barSize={16}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false}/>
-                  <XAxis dataKey="m" tick={{fill:"#404040",fontSize:10}} axisLine={false} tickLine={false}/>
-                  <YAxis tick={{fill:"#404040",fontSize:10}} axisLine={false} tickLine={false}/>
-                  <Tooltip cursor={{fill:"rgba(255,255,255,0.03)"}}
-                    contentStyle={{background:"#181818",border:"1px solid rgba(255,255,255,0.08)",borderRadius:10,fontSize:12}}
-                    labelStyle={{color:"#A3A3A3"}} itemStyle={{color:"#FACC15"}}/>
-                  <Bar dataKey="l" fill="#FACC15" radius={[4,4,0,0]} opacity={0.75}/>
+                <BarChart data={DATA} margin={{ top: 4, right: 4, left: -24, bottom: 0 }} barSize={16}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                  <XAxis dataKey="m" tick={{ fill: "#404040", fontSize: 10 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: "#404040", fontSize: 10 }} axisLine={false} tickLine={false} />
+                  <Tooltip cursor={{ fill: "rgba(255,255,255,0.03)" }} contentStyle={{ background: "#181818", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 10, fontSize: 12 }} />
+                  <Bar dataKey="l" fill="#FACC15" radius={[4, 4, 0, 0]} opacity={0.75} />
                 </BarChart>
               </ResponsiveContainer>
             </motion.div>
           </div>
-
-          {/* Circular progress */}
-          <motion.div initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
-            transition={{duration:.65,delay:.1,ease:E}}
-            className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {[{l:"Pipeline Health",p:82},{l:"Lead Quality",p:68},{l:"Follow-Up Rate",p:91}].map(c=>(
-              <div key={c.l} className="flex items-center gap-5 rounded-[18px] border border-white/[0.06] bg-[#111111] p-6">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65, delay: 0.1, ease: E }} className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {[{ l: "Pipeline Health", p: 82 }, { l: "Lead Quality", p: 68 }, { l: "Follow-Up Rate", p: 91 }].map(c => (
+              <div key={c.l} className="card flex items-center gap-5 p-6">
                 <svg viewBox="0 0 36 36" className="h-14 w-14 shrink-0 -rotate-90">
-                  <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="2.5"/>
-                  <motion.circle cx="18" cy="18" r="14" fill="none" stroke="#FACC15" strokeWidth="2.5"
-                    strokeLinecap="round" strokeDasharray={`${2*Math.PI*14}`}
-                    initial={{strokeDashoffset:2*Math.PI*14}}
-                    whileInView={{strokeDashoffset:2*Math.PI*14*(1-c.p/100)}}
-                    viewport={{once:true}} transition={{duration:1.2,delay:.2,ease:"easeOut"}}/>
+                  <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="2.5" />
+                  <motion.circle cx="18" cy="18" r="14" fill="none" stroke="#FACC15" strokeWidth="2.5" strokeLinecap="round"
+                    strokeDasharray={`${2 * Math.PI * 14}`} initial={{ strokeDashoffset: 2 * Math.PI * 14 }}
+                    whileInView={{ strokeDashoffset: 2 * Math.PI * 14 * (1 - c.p / 100) }} viewport={{ once: true }}
+                    transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }} />
                 </svg>
-                <div>
-                  <p className="text-[22px] font-extrabold tracking-[-0.04em] text-white">{c.p}%</p>
-                  <p className="text-[13px] text-[#737373]">{c.l}</p>
-                </div>
+                <div><p className="text-[22px] font-extrabold tracking-tight text-white">{c.p}%</p><p className="text-[13px] text-[#737373]">{c.l}</p></div>
               </div>
             ))}
           </motion.div>
         </Container>
       </section>
 
-      <section className="border-t border-white/[0.06] py-20 sm:py-28">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-[clamp(1.8rem,3.5vw,2.75rem)] font-extrabold tracking-[-0.035em] text-white">
-              See your own data in real time
-            </h2>
-            <p className="mx-auto mt-4 max-w-sm text-[17px] leading-[1.8] text-[#A3A3A3]">Start free and watch your pipeline analytics come alive.</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/signup" className="inline-flex items-center gap-2 rounded-full bg-[#FACC15] px-7 py-4 text-[15px] font-bold text-black shadow-lg shadow-[#FACC15]/20">
-                Start Free <ArrowRight size={16}/>
-              </Link>
-              <Link href="/pricing" className="inline-flex rounded-full border border-white/[0.1] px-7 py-4 text-[15px] font-semibold text-[#A3A3A3] hover:border-white/[0.2] hover:text-white">
-                View Pricing
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </section>
-      <SiteFooter/>
+      <SiteFooter />
     </main>
   )
 }

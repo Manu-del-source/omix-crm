@@ -1,120 +1,74 @@
-"use client"
-
+'use client'
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { supabase } from "@/lib/supabase"
 import { toast } from "sonner"
-import { ArrowLeft, User, Building2, Mail, Phone, Tag, Loader2 } from "lucide-react"
+import { ArrowLeft, Loader2, UserPlus } from "lucide-react"
 import Link from "next/link"
 
 const statuses = ["New", "Contacted", "Qualified", "Proposal", "Won", "Lost"]
 
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } }
-const fadeUp = {
-  hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0, 0, 0.2, 1] as [number, number, number, number] } },
-}
-
-function Field({
-  label, icon: Icon, children,
-}: { label: string; icon: any; children: React.ReactNode }) {
-  return (
-    <motion.div variants={fadeUp} className="flex flex-col gap-2">
-      <label className="flex items-center gap-2 text-sm font-medium text-zinc-400">
-        <Icon size={14} className="text-zinc-600" /> {label}
-      </label>
-      {children}
-    </motion.div>
-  )
-}
-
 export default function NewLeadPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
-  const [form, setForm] = useState({
-    name: "", company: "", email: "", phone: "", status: "New",
-  })
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", status: "New", notes: "" })
 
-  const set = (k: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }))
-
-  const inputCls =
-    "rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none backdrop-blur-xl transition focus:border-orange-400/60 placeholder:text-zinc-600 w-full"
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!form.name.trim()) { toast.error("Name is required"); return }
-
     setLoading(true)
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) { toast.error("Not authenticated"); setLoading(false); return }
-
-    const { error } = await supabase.from("leads").insert([{ ...form, user_id: user.id }])
+    const { error } = await supabase.from("leads").insert([{ ...form, created_at: new Date().toISOString() }])
     setLoading(false)
-
     if (error) { toast.error(error.message); return }
-    toast.success("Lead added successfully!")
+    toast.success("Lead created!")
     router.push("/leads")
   }
 
   return (
-    <div className="min-h-screen bg-black p-6 text-white">
-      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-        <Link href="/leads" className="mb-4 flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white">
+    <div className="p-6 lg:p-8 max-w-2xl">
+      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+        <Link href="/leads" className="inline-flex items-center gap-1.5 text-sm text-[#737373] hover:text-white transition mb-6">
           <ArrowLeft size={15} /> Back to Leads
         </Link>
-        <h1 className="text-3xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          Add New Lead
-        </h1>
-        <p className="mt-2 text-zinc-400">Fill in the details for your new lead</p>
-      </motion.div>
+        <h1 className="text-2xl font-bold mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>New Lead</h1>
 
-      <motion.form
-        onSubmit={handleSubmit}
-        variants={stagger}
-        initial="hidden"
-        animate="show"
-        className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
-      >
-        <div className="grid gap-5">
-          <Field label="Full Name *" icon={User}>
-            <input value={form.name} onChange={set("name")} placeholder="John Kamau" className={inputCls} required />
-          </Field>
-          <Field label="Company" icon={Building2}>
-            <input value={form.company} onChange={set("company")} placeholder="Acme Ltd" className={inputCls} />
-          </Field>
-          <Field label="Email Address" icon={Mail}>
-            <input type="email" value={form.email} onChange={set("email")} placeholder="john@company.co.ke" className={inputCls} />
-          </Field>
-          <Field label="Phone Number" icon={Phone}>
-            <input value={form.phone} onChange={set("phone")} placeholder="+254 7XX XXX XXX" className={inputCls} />
-          </Field>
-          <Field label="Status" icon={Tag}>
-            <select value={form.status} onChange={set("status")} className={inputCls}>
-              {statuses.map((s) => <option key={s} value={s} className="bg-zinc-900">{s}</option>)}
+        <form onSubmit={submit} className="card p-8 space-y-5">
+          <div className="grid gap-5 md:grid-cols-2">
+            <div>
+              <label className="label">Full name <span className="text-[#FACC15]">*</span></label>
+              <input value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="James Odhiambo" className="input-field" required />
+            </div>
+            <div>
+              <label className="label">Company</label>
+              <input value={form.company} onChange={e => setForm(f => ({ ...f, company: e.target.value }))} placeholder="Two Rivers Holdings" className="input-field" />
+            </div>
+            <div>
+              <label className="label">Email</label>
+              <input type="email" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="james@company.co.ke" className="input-field" />
+            </div>
+            <div>
+              <label className="label">Phone</label>
+              <input value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+254 7XX XXX XXX" className="input-field" />
+            </div>
+          </div>
+          <div>
+            <label className="label">Status</label>
+            <select value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))} className="input-field cursor-pointer">
+              {statuses.map(s => <option key={s} value={s} className="bg-[#0D0D0D]">{s}</option>)}
             </select>
-          </Field>
-        </div>
-
-        <motion.div variants={fadeUp} className="mt-8 flex gap-3">
-          <motion.button
-            type="submit"
-            disabled={loading}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 to-blue-500 py-3 font-semibold transition disabled:opacity-60"
-          >
-            {loading ? <><Loader2 size={16} className="animate-spin" /> Adding…</> : "Add Lead"}
-          </motion.button>
-          <Link
-            href="/leads"
-            className="flex items-center justify-center rounded-xl border border-white/10 px-6 py-3 text-sm text-zinc-400 transition hover:bg-white/10 hover:text-white"
-          >
-            Cancel
-          </Link>
-        </motion.div>
-      </motion.form>
+          </div>
+          <div>
+            <label className="label">Notes</label>
+            <textarea value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))} rows={3} placeholder="Any additional details..." className="input-field resize-none" />
+          </div>
+          <button type="submit" disabled={loading}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#FACC15] py-3.5 text-sm font-bold text-black transition-all hover:bg-[#FDE68A] disabled:opacity-60">
+            {loading ? <Loader2 size={16} className="animate-spin" /> : <UserPlus size={16} />}
+            {loading ? "Creating..." : "Create Lead"}
+          </button>
+        </form>
+      </motion.div>
     </div>
   )
 }
