@@ -18,12 +18,12 @@ export default function Sidebar() {
   const logout = async () => { await supabase.auth.signOut(); window.location.href = "/login" }
 
   return (
-    <aside className="flex min-h-screen w-60 flex-col border-r border-[rgba(0,0,0,0.06)] bg-white max-lg:hidden">
-      <div className="flex items-center gap-2 border-b border-[rgba(0,0,0,0.06)] px-5 py-4">
-        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
+    <aside className="flex min-h-screen w-60 flex-col border-r border-[rgba(255,255,255,0.09)] bg-[#0A1120]/70 backdrop-blur-xl max-lg:hidden">
+      <div className="flex items-center gap-2 border-b border-[rgba(255,255,255,0.09)] px-5 py-4">
+        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-[#38BDF8] to-[#818CF8]">
           <span className="text-white text-[10px] font-bold">O</span>
         </span>
-        <span className="text-[14px] font-bold text-[#1C1917]">Omix</span>
+        <span className="text-[14px] font-bold text-[#E7ECF6]">Omix</span>
       </div>
       <nav className="flex-1 space-y-0.5 px-3 py-4">
         {links.map(l => {
@@ -32,16 +32,16 @@ export default function Sidebar() {
           return (
             <Link key={l.href} href={l.href}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all ${
-                active ? "bg-gradient-to-r from-[#C73B2A]/10 to-transparent text-[#C73B2A] border-r-2 border-[#C73B2A]" : "text-[#78716C] hover:bg-[#FAF8F5] hover:text-[#1C1917]"
+                active ? "bg-gradient-to-r from-[#38BDF8]/10 to-transparent text-[#38BDF8] border-r-2 border-[#38BDF8]" : "text-[#8A93A8] hover:bg-[#131D30] hover:text-[#E7ECF6]"
               }`}>
               <Icon size={17} /> {l.name}
             </Link>
           )
         })}
       </nav>
-      <div className="border-t border-[rgba(0,0,0,0.06)] p-3">
+      <div className="border-t border-[rgba(255,255,255,0.09)] p-3">
         <button onClick={logout}
-          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium text-[#78716C] transition-all hover:bg-[#FEF2F0] hover:text-[#C73B2A]">
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium text-[#8A93A8] transition-all hover:bg-[#0C2033] hover:text-[#38BDF8]">
           <LogOut size={17} /> Logout
         </button>
       </div>

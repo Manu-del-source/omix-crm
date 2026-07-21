@@ -32,9 +32,9 @@ export default function NotificationsPage() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Notifications</h1>
-          <p className="mt-0.5 text-[14px] text-[#78716C]">Tasks, reminders, and activity</p>
+          <p className="mt-0.5 text-[14px] text-[#8A93A8]">Tasks, reminders, and activity</p>
         </div>
-        <button onClick={fetch} className="flex items-center gap-1.5 rounded-lg border border-[rgba(0,0,0,0.08)] bg-white px-3.5 py-2 text-[12px] font-medium text-[#78716C] transition-all hover:border-[rgba(0,0,0,0.12)]">
+        <button onClick={fetch} className="flex items-center gap-1.5 rounded-lg border border-[rgba(255,255,255,0.12)] bg-[#0D1626] px-3.5 py-2 text-[12px] font-medium text-[#8A93A8] transition-all hover:border-[rgba(255,255,255,0.12)]">
           <RefreshCw size={13} /> Refresh
         </button>
       </div>
@@ -50,9 +50,9 @@ export default function NotificationsPage() {
             <div key={s.label} className={`card p-4 ${s.bg}`}>
               <div className="flex items-center justify-between">
                 <Icon size={17} className={s.color} />
-                <span className="text-lg font-semibold text-[#1C1917]">{s.count}</span>
+                <span className="text-lg font-semibold text-[#E7ECF6]">{s.count}</span>
               </div>
-              <p className="mt-1.5 text-[12px] text-[#78716C]">{s.label}</p>
+              <p className="mt-1.5 text-[12px] text-[#8A93A8]">{s.label}</p>
             </div>
           )
         })}
@@ -60,7 +60,7 @@ export default function NotificationsPage() {
 
       <div className="grid gap-5 xl:grid-cols-2">
         <div className="card p-5">
-          <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-[#1C1917]"><Bell size={16} className="text-amber-500" /> Task Reminders</h2>
+          <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-[#E7ECF6]"><Bell size={16} className="text-amber-500" /> Task Reminders</h2>
           {loading ? <div className="space-y-2">{[...Array(4)].map((_, i) => <div key={i} className="h-14 skeleton" />)}</div> : (
             <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-2">
               <AnimatePresence>
@@ -68,13 +68,13 @@ export default function NotificationsPage() {
                   const isOverdue = !task.completed && task.due_date && new Date(task.due_date) < now
                   return (
                     <motion.div key={task.id} variants={item}
-                      className={`rounded-xl border p-3.5 ${task.completed ? "border-green-200/50 bg-green-50/50" : isOverdue ? "border-red-200/50 bg-red-50/50" : "border-[rgba(0,0,0,0.06)] bg-white"}`}>
+                      className={`rounded-xl border p-3.5 ${task.completed ? "border-green-200/50 bg-green-50/50" : isOverdue ? "border-red-200/50 bg-red-50/50" : "border-[rgba(255,255,255,0.09)] bg-[#0D1626]"}`}>
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2.5 min-w-0">
                           {task.completed ? <CheckCircle size={15} className="shrink-0 text-green-500" /> : isOverdue ? <AlertTriangle size={15} className="shrink-0 text-red-500" /> : <Clock size={15} className="shrink-0 text-amber-500" />}
                           <div className="min-w-0">
-                            <p className={`text-[13px] font-medium truncate ${task.completed ? "text-[#A8A29E] line-through" : "text-[#1C1917]"}`}>{task.title}</p>
-                            {task.leads?.name && <p className="text-[11px] text-[#A8A29E] truncate">{task.leads.name}</p>}
+                            <p className={`text-[13px] font-medium truncate ${task.completed ? "text-[#616B80] line-through" : "text-[#E7ECF6]"}`}>{task.title}</p>
+                            {task.leads?.name && <p className="text-[11px] text-[#616B80] truncate">{task.leads.name}</p>}
                           </div>
                         </div>
                         <span className={`shrink-0 rounded px-2 py-0.5 text-[10px] font-medium ${
@@ -85,23 +85,23 @@ export default function NotificationsPage() {
                   )
                 })}
               </AnimatePresence>
-              {tasks.length === 0 && <p className="py-6 text-center text-[13px] text-[#A8A29E]">No tasks yet</p>}
+              {tasks.length === 0 && <p className="py-6 text-center text-[13px] text-[#616B80]">No tasks yet</p>}
             </motion.div>
           )}
         </div>
 
         <div className="card p-5">
-          <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-[#1C1917]"><User size={16} className="text-blue-500" /> Recent Leads</h2>
+          <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold text-[#E7ECF6]"><User size={16} className="text-blue-500" /> Recent Leads</h2>
           {loading ? <div className="space-y-2">{[...Array(5)].map((_, i) => <div key={i} className="h-12 skeleton" />)}</div> : (
             <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-2">
               {recentLeads.map(lead => (
                 <motion.div key={lead.id} variants={item}
-                  className="flex items-center justify-between rounded-xl border border-[rgba(0,0,0,0.06)] bg-white p-3.5">
+                  className="flex items-center justify-between rounded-xl border border-[rgba(255,255,255,0.09)] bg-[#0D1626] p-3.5">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#FEF2F0] text-[12px] font-semibold text-[#C73B2A]">{lead.name?.[0]?.toUpperCase()}</div>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[#0C2033] text-[12px] font-semibold text-[#38BDF8]">{lead.name?.[0]?.toUpperCase()}</div>
                     <div className="min-w-0">
                       <p className="text-[13px] font-medium truncate">{lead.name}</p>
-                      <p className="text-[11px] text-[#A8A29E] truncate">{lead.company}</p>
+                      <p className="text-[11px] text-[#616B80] truncate">{lead.company}</p>
                     </div>
                   </div>
                   <span className={`shrink-0 rounded px-2 py-0.5 text-[10px] font-medium ${
@@ -109,7 +109,7 @@ export default function NotificationsPage() {
                   }`}>{lead.status}</span>
                 </motion.div>
               ))}
-              {recentLeads.length === 0 && <p className="py-6 text-center text-[13px] text-[#A8A29E]">No leads yet</p>}
+              {recentLeads.length === 0 && <p className="py-6 text-center text-[13px] text-[#616B80]">No leads yet</p>}
             </motion.div>
           )}
         </div>

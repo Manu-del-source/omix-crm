@@ -30,27 +30,27 @@ const STATS = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#F8F6F3] text-[#1C1917]">
+    <main className="min-h-screen bg-[#070B14] text-[#E7ECF6]">
       <SiteNav />
 
       {/* ─── HERO ─── */}
       <section className="relative overflow-hidden pt-20 pb-10 sm:pt-24 sm:pb-14">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-[#C73B2A]/5 to-transparent blur-3xl" />
+          <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-[#38BDF8]/5 to-transparent blur-3xl" />
           <div className="absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-gradient-to-tr from-blue-500/5 to-transparent blur-3xl" />
           <div className="grid-bg absolute inset-0" />
         </div>
         <div className="relative mx-auto max-w-[1200px] px-6">
           <div className="max-w-[580px]">
             <motion.span initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: E }}
-              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#C73B2A]/10 to-[#C73B2A]/5 px-3 py-1 text-[11px] font-medium text-[#C73B2A] border border-[#C73B2A]/10">
+              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#38BDF8]/10 to-[#38BDF8]/5 px-3 py-1 text-[11px] font-medium text-[#38BDF8] border border-[#38BDF8]/10">
               <Sparkles size={11} />
               Built for African businesses
             </motion.span>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: E }}
               className="mt-4 h1">
               Close more deals.<br />
-              <span className="bg-gradient-to-r from-[#C73B2A] to-[#E85D3A] bg-clip-text text-transparent">Move faster.</span>
+              <span className="bg-gradient-to-r from-[#38BDF8] to-[#818CF8] bg-clip-text text-transparent">Move faster.</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2, ease: E }}
               className="mt-3 body-lg max-w-[420px]">
@@ -58,7 +58,7 @@ export default function HomePage() {
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3, ease: E }}
               className="mt-5 flex flex-wrap items-center gap-3">
-              <Link href="/signup" className="btn-primary shadow-lg shadow-[#C73B2A]/20">
+              <Link href="/signup" className="btn-primary shadow-lg shadow-[#38BDF8]/20">
                 Start Free Today <ArrowRight size={15} />
               </Link>
               <Link href="/features" className="btn-secondary">See Features</Link>
@@ -68,9 +68,9 @@ export default function HomePage() {
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
             className="pointer-events-none absolute -right-16 top-1/2 hidden -translate-y-1/2 lg:block">
             <div className="relative h-[340px] w-[340px]">
-              <div className="absolute inset-0 rounded-full border border-[rgba(199,59,42,0.06)] animate-float" style={{ animationDuration: "7s" }} />
-              <div className="absolute inset-10 rounded-full border border-[rgba(199,59,42,0.04)] animate-float" style={{ animationDuration: "9s", animationDelay: "-2s" }} />
-              <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-gradient-to-br from-[#C73B2A] to-[#E85D3A] shadow-lg shadow-[#C73B2A]/30 flex items-center justify-center">
+              <div className="absolute inset-0 rounded-full border border-[rgba(56, 189, 248,0.06)] animate-float" style={{ animationDuration: "7s" }} />
+              <div className="absolute inset-10 rounded-full border border-[rgba(56, 189, 248,0.04)] animate-float" style={{ animationDuration: "9s", animationDelay: "-2s" }} />
+              <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-gradient-to-br from-[#38BDF8] to-[#818CF8] shadow-lg shadow-[#38BDF8]/30 flex items-center justify-center">
                 <KanbanSquare size={24} className="text-white" />
               </div>
             </div>
@@ -83,9 +83,9 @@ export default function HomePage() {
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {STATS.map((s, i) => (
               <motion.div key={s.label} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.08 }}
-                className="rounded-lg border border-[rgba(0,0,0,0.06)] bg-white/60 p-4 text-center backdrop-blur-sm">
-                <p className="text-lg font-bold text-[#1C1917]">{s.value}</p>
-                <p className="text-[11px] text-[#78716C] mt-0.5">{s.label}</p>
+                className="rounded-lg border border-[rgba(255,255,255,0.09)] bg-white/5 p-4 text-center backdrop-blur-md">
+                <p className="text-lg font-bold text-[#E7ECF6]">{s.value}</p>
+                <p className="text-[11px] text-[#8A93A8] mt-0.5">{s.label}</p>
               </motion.div>
             ))}
           </div>
@@ -109,8 +109,8 @@ export default function HomePage() {
                 <div className={`mb-3 flex h-8 w-8 items-center justify-center rounded-lg ${c.bg}`}>
                   <c.icon size={16} />
                 </div>
-                <h3 className="text-[14px] font-semibold text-[#1C1917] relative z-10">{c.title}</h3>
-                <p className="mt-1 text-[13px] leading-relaxed text-[#78716C] relative z-10">{c.desc}</p>
+                <h3 className="text-[14px] font-semibold text-[#E7ECF6] relative z-10">{c.title}</h3>
+                <p className="mt-1 text-[13px] leading-relaxed text-[#8A93A8] relative z-10">{c.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -118,25 +118,25 @@ export default function HomePage() {
       </section>
 
       {/* ─── DASHBOARD PREVIEW ─── */}
-      <section className="section bg-gradient-to-b from-white to-[#F8F6F3] border-t border-[rgba(0,0,0,0.04)]">
+      <section className="section bg-gradient-to-b from-[#0A1120] to-transparent border-t border-[rgba(255,255,255,0.06)]">
         <Container>
           <motion.div {...fadeUp} className="text-center mb-6">
             <p className="section-label mb-1">Product</p>
             <h2 className="h2">See Omix in action</h2>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="rounded-xl border border-[rgba(0,0,0,0.06)] bg-white p-4 shadow-lg sm:p-6">
-            <div className="flex items-center gap-1.5 mb-4 pb-4 border-b border-[rgba(0,0,0,0.04)]">
+            className="rounded-xl border border-[rgba(255,255,255,0.09)] bg-[#0D1626] p-4 shadow-lg sm:p-6">
+            <div className="flex items-center gap-1.5 mb-4 pb-4 border-b border-[rgba(255,255,255,0.06)]">
               <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
               <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
               <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-              <span className="ml-2 font-mono text-[10px] text-[#A8A29E]">app.omixcrm.com</span>
+              <span className="ml-2 font-mono text-[10px] text-[#616B80]">app.omixcrm.com</span>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-4">
               {[{ l: "Total Leads", v: "2,847", c: "text-blue-600 bg-blue-100" }, { l: "Pipeline", v: "KES 4.2M", c: "text-purple-600 bg-purple-100" }, { l: "Won Deals", v: "38", c: "text-green-600 bg-green-100" }, { l: "Win Rate", v: "68%", c: "text-amber-600 bg-amber-100" }].map(k => (
-                <div key={k.l} className="rounded-lg border border-[rgba(0,0,0,0.04)] p-3">
-                  <p className="text-[10px] text-[#A8A29E]">{k.l}</p>
-                  <p className="text-base font-bold text-[#1C1917] mt-0.5">{k.v}</p>
+                <div key={k.l} className="rounded-lg border border-[rgba(255,255,255,0.06)] p-3">
+                  <p className="text-[10px] text-[#616B80]">{k.l}</p>
+                  <p className="text-base font-bold text-[#E7ECF6] mt-0.5">{k.v}</p>
                   <p className={`text-[10px] font-medium mt-0.5 ${k.c.split(" ")[0]}`}>+12.5%</p>
                 </div>
               ))}
@@ -145,7 +145,7 @@ export default function HomePage() {
               {[40, 62, 35, 78, 53, 95, 74].map((h, i) => (
                 <motion.div key={i} initial={{ height: 0 }} whileInView={{ height: `${h}%` }} viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.06, duration: 0.5 }}
-                  className={`flex-1 rounded-t ${i === 5 ? "bg-gradient-to-t from-[#C73B2A] to-[#E85D3A]" : "bg-[rgba(0,0,0,0.06)]"} min-h-[4px]`} />
+                  className={`flex-1 rounded-t ${i === 5 ? "bg-gradient-to-t from-[#38BDF8] to-[#818CF8]" : "bg-[rgba(255,255,255,0.09)]"} min-h-[4px]`} />
               ))}
             </div>
           </motion.div>
@@ -153,7 +153,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── TESTIMONIALS ─── */}
-      <section className="section bg-white border-t border-[rgba(0,0,0,0.04)]">
+      <section className="section bg-[#0D1626] border-t border-[rgba(255,255,255,0.06)]">
         <Container>
           <motion.div {...fadeUp} className="mb-6 text-center">
             <p className="section-label mb-1">Customers</p>
@@ -169,10 +169,10 @@ export default function HomePage() {
                 transition={{ duration: 0.4, delay: i * 0.06, ease: E }} whileHover={{ y: -3 }}
                 className="card p-5">
                 <div className="mb-3 flex gap-0.5">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={11} className="fill-amber-400 text-amber-400" />)}</div>
-                <p className="flex-1 text-[13px] leading-relaxed text-[#78716C]">&ldquo;{t.q}&rdquo;</p>
-                <div className="mt-3 flex items-center gap-2.5 border-t border-[rgba(0,0,0,0.04)] pt-3">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#C73B2A] to-[#E85D3A] text-[10px] font-semibold text-white">{t.i}</div>
-                  <div><p className="text-[12px] font-semibold text-[#1C1917]">{t.name}</p><p className="text-[11px] text-[#A8A29E]">{t.role}</p></div>
+                <p className="flex-1 text-[13px] leading-relaxed text-[#8A93A8]">&ldquo;{t.q}&rdquo;</p>
+                <div className="mt-3 flex items-center gap-2.5 border-t border-[rgba(255,255,255,0.06)] pt-3">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#38BDF8] to-[#818CF8] text-[10px] font-semibold text-white">{t.i}</div>
+                  <div><p className="text-[12px] font-semibold text-[#E7ECF6]">{t.name}</p><p className="text-[11px] text-[#616B80]">{t.role}</p></div>
                 </div>
               </motion.div>
             ))}
@@ -183,7 +183,7 @@ export default function HomePage() {
       {/* ─── CTA ─── */}
       <section className="section">
         <Container>
-          <motion.div {...fadeUp} className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#C73B2A] to-[#E85D3A] px-6 py-10 text-center sm:px-10 sm:py-12 shadow-xl shadow-[#C73B2A]/20">
+          <motion.div {...fadeUp} className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#38BDF8] to-[#818CF8] px-6 py-10 text-center sm:px-10 sm:py-12 shadow-xl shadow-[#38BDF8]/20">
             <div className="pointer-events-none absolute inset-0">
               <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
               <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
@@ -192,7 +192,7 @@ export default function HomePage() {
               <h2 className="text-2xl font-bold text-white sm:text-3xl">Ready to grow your business?</h2>
               <p className="mx-auto mt-2 max-w-[380px] text-[14px] text-white/80">Join hundreds of teams across Kenya already using Omix.</p>
               <Link href="/signup"
-                className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-[13px] font-semibold text-[#C73B2A] transition-all hover:bg-white/90 hover:shadow-lg mt-5">
+                className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-[13px] font-semibold text-[#05121a] transition-all hover:bg-white/90 hover:shadow-lg mt-5">
                 Start Free Today <ArrowRight size={15} />
               </Link>
             </div>

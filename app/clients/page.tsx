@@ -20,16 +20,16 @@ export default function ClientsPage() {
     <div className="p-6 lg:p-8">
       <div className="mb-6">
         <h1 className="text-2xl font-semibold tracking-tight">Clients</h1>
-        <p className="mt-0.5 text-[14px] text-[#78716C]">{loading ? "Loading..." : `${clients.length} won deal${clients.length !== 1 ? "s" : ""}`}</p>
+        <p className="mt-0.5 text-[14px] text-[#8A93A8]">{loading ? "Loading..." : `${clients.length} won deal${clients.length !== 1 ? "s" : ""}`}</p>
       </div>
       {loading ? (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{[...Array(4)].map((_, i) => <div key={i} className="h-28 skeleton" />)}</div>
       ) : clients.length === 0 ? (
         <div className="flex flex-col items-center py-20 text-center">
-          <Trophy size={36} className="mb-3 text-[#A8A29E]" />
-          <p className="text-[15px] font-medium text-[#78716C]">No clients yet</p>
-          <p className="mt-1 text-[13px] text-[#A8A29E]">Leads marked as &quot;Won&quot; appear here</p>
-          <Link href="/leads" className="mt-4 rounded-lg bg-[#C73B2A] px-5 py-2.5 text-[13px] font-medium text-white">View Leads</Link>
+          <Trophy size={36} className="mb-3 text-[#616B80]" />
+          <p className="text-[15px] font-medium text-[#8A93A8]">No clients yet</p>
+          <p className="mt-1 text-[13px] text-[#616B80]">Leads marked as &quot;Won&quot; appear here</p>
+          <Link href="/leads" className="mt-4 rounded-lg bg-[#38BDF8] px-5 py-2.5 text-[13px] font-medium text-white">View Leads</Link>
         </div>
       ) : (
         <motion.div variants={stagger} initial="hidden" animate="show" className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -40,13 +40,13 @@ export default function ClientsPage() {
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-100 text-base font-bold text-green-600">{c.name?.[0]?.toUpperCase()}</div>
                     <div>
-                      <h2 className="text-[14px] font-semibold text-[#1C1917] group-hover:text-green-600 transition-colors">{c.name}</h2>
+                      <h2 className="text-[14px] font-semibold text-[#E7ECF6] group-hover:text-green-600 transition-colors">{c.name}</h2>
                       <span className="mt-0.5 inline-block rounded bg-green-100 px-1.5 py-0.5 text-[10px] font-medium text-green-600">Won</span>
                     </div>
                   </div>
-                  <ChevronRight size={14} className="mt-1 shrink-0 text-[#A8A29E] group-hover:translate-x-0.5 group-hover:text-green-600 transition-all" />
+                  <ChevronRight size={14} className="mt-1 shrink-0 text-[#616B80] group-hover:translate-x-0.5 group-hover:text-green-600 transition-all" />
                 </div>
-                <div className="mt-3 space-y-1 text-[13px] text-[#A8A29E]">
+                <div className="mt-3 space-y-1 text-[13px] text-[#616B80]">
                   {c.company && <div className="flex items-center gap-1.5"><Building2 size={12} />{c.company}</div>}
                   {c.email && <div className="flex items-center gap-1.5"><Mail size={12} />{c.email}</div>}
                   {c.phone && <div className="flex items-center gap-1.5"><Phone size={12} />{c.phone}</div>}

@@ -39,11 +39,11 @@ export default function LeadsPage() {
       <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Leads</h1>
-          <p className="mt-0.5 text-[14px] text-[#78716C]">{loading ? "Loading..." : `${filtered.length} of ${leads.length} leads`}</p>
+          <p className="mt-0.5 text-[14px] text-[#8A93A8]">{loading ? "Loading..." : `${filtered.length} of ${leads.length} leads`}</p>
         </div>
         <div className="flex gap-3">
-          <Link href="/pipeline" className="flex items-center gap-1.5 rounded-lg border border-[rgba(0,0,0,0.08)] bg-white px-3.5 py-2 text-[13px] font-medium text-[#78716C] transition-all hover:border-[rgba(0,0,0,0.12)] hover:text-[#1C1917]">Pipeline <ChevronRight size={14} /></Link>
-          <Link href="/leads/new" className="flex items-center gap-1.5 rounded-lg bg-[#C73B2A] px-3.5 py-2 text-[13px] font-medium text-white transition-all hover:opacity-90"><Plus size={15} /> Add Lead</Link>
+          <Link href="/pipeline" className="flex items-center gap-1.5 rounded-lg border border-[rgba(255,255,255,0.12)] bg-[#0D1626] px-3.5 py-2 text-[13px] font-medium text-[#8A93A8] transition-all hover:border-[rgba(255,255,255,0.12)] hover:text-[#E7ECF6]">Pipeline <ChevronRight size={14} /></Link>
+          <Link href="/leads/new" className="flex items-center gap-1.5 rounded-lg bg-[#38BDF8] px-3.5 py-2 text-[13px] font-medium text-white transition-all hover:opacity-90"><Plus size={15} /> Add Lead</Link>
         </div>
       </div>
 
@@ -51,14 +51,14 @@ export default function LeadsPage() {
         {STATUSES.map(s => (
           <button key={s} onClick={() => setStatus(s)}
             className={`rounded-lg px-3 py-1.5 text-[12px] font-medium transition-all ${
-              status === s ? "bg-[#C73B2A] text-white" : "bg-white border border-[rgba(0,0,0,0.06)] text-[#78716C] hover:border-[rgba(0,0,0,0.12)]"
+              status === s ? "bg-[#38BDF8] text-white" : "bg-[#0D1626] border border-[rgba(255,255,255,0.09)] text-[#8A93A8] hover:border-[rgba(255,255,255,0.12)]"
             }`}>{s}</button>
         ))}
       </div>
 
       <div className="mb-6 flex gap-3">
         <div className="relative flex-1 max-w-xs">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A8A29E]" />
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#616B80]" />
           <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search..." className="input-field pl-9 text-[13px]" />
         </div>
       </div>
@@ -74,15 +74,15 @@ export default function LeadsPage() {
                   <Link href={`/leads/${lead.id}`} className="group card block p-5">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FEF2F0] text-sm font-semibold text-[#C73B2A]">{lead.name?.[0]?.toUpperCase() || "?"}</div>
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#0C2033] text-sm font-semibold text-[#38BDF8]">{lead.name?.[0]?.toUpperCase() || "?"}</div>
                         <div>
-                          <h2 className="text-[14px] font-semibold text-[#1C1917] group-hover:text-[#C73B2A] transition-colors">{lead.name}</h2>
+                          <h2 className="text-[14px] font-semibold text-[#E7ECF6] group-hover:text-[#38BDF8] transition-colors">{lead.name}</h2>
                           <span className={`mt-0.5 inline-block rounded px-1.5 py-0.5 text-[10px] font-medium ${STATUS_COLORS[lead.status] || "bg-zinc-100 text-zinc-500"}`}>{lead.status || "New"}</span>
                         </div>
                       </div>
-                      <ChevronRight size={14} className="mt-1 shrink-0 text-[#A8A29E] transition group-hover:translate-x-0.5 group-hover:text-[#C73B2A]" />
+                      <ChevronRight size={14} className="mt-1 shrink-0 text-[#616B80] transition group-hover:translate-x-0.5 group-hover:text-[#38BDF8]" />
                     </div>
-                    <div className="mt-3 space-y-1 text-[13px] text-[#A8A29E]">
+                    <div className="mt-3 space-y-1 text-[13px] text-[#616B80]">
                       {lead.company && <div className="flex items-center gap-1.5"><Building2 size={12} /><span className="truncate">{lead.company}</span></div>}
                       {lead.email && <div className="flex items-center gap-1.5"><Mail size={12} /><span className="truncate">{lead.email}</span></div>}
                       {lead.phone && <div className="flex items-center gap-1.5"><Phone size={12} /><span>{lead.phone}</span></div>}
@@ -93,9 +93,9 @@ export default function LeadsPage() {
             </motion.div>
           ) : (
             <div className="flex flex-col items-center py-20 text-center">
-              <User size={36} className="mb-3 text-[#A8A29E]" />
-              <p className="text-[15px] font-medium text-[#78716C]">No leads found</p>
-              <Link href="/leads/new" className="mt-4 rounded-lg bg-[#C73B2A] px-5 py-2.5 text-[13px] font-medium text-white"><Plus size={14} /> Add First Lead</Link>
+              <User size={36} className="mb-3 text-[#616B80]" />
+              <p className="text-[15px] font-medium text-[#8A93A8]">No leads found</p>
+              <Link href="/leads/new" className="mt-4 rounded-lg bg-[#38BDF8] px-5 py-2.5 text-[13px] font-medium text-white"><Plus size={14} /> Add First Lead</Link>
             </div>
           )}
         </AnimatePresence>

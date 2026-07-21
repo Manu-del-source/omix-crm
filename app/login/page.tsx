@@ -38,23 +38,23 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F8F6F3] px-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#070B14] px-4">
       <div className="pointer-events-none fixed inset-0 grid-bg opacity-40" />
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: E }} className="relative w-full max-w-[400px]">
-        <div className="rounded-2xl border border-[rgba(0,0,0,0.06)] bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.04)] sm:p-10">
+        <div className="rounded-2xl border border-[rgba(255,255,255,0.09)] bg-[#0D1626] p-8 shadow-[0_2px_8px_rgba(255,255,255,0.06)] sm:p-10">
           <div className="mb-8 text-center">
             <Link href="/" className="mb-4 inline-flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br from-[#38BDF8] to-[#818CF8]">
                 <span className="text-white text-[11px] font-bold">O</span>
               </span>
-              <span className="text-[14px] font-bold text-[#1C1917]">Omix</span>
+              <span className="text-[14px] font-bold text-[#E7ECF6]">Omix</span>
             </Link>
-            <h1 className="mt-5 text-xl font-semibold text-[#1C1917]">Welcome back</h1>
-            <p className="mt-1 text-[14px] text-[#78716C]">Sign in to your account</p>
+            <h1 className="mt-5 text-xl font-semibold text-[#E7ECF6]">Welcome back</h1>
+            <p className="mt-1 text-[14px] text-[#8A93A8]">Sign in to your account</p>
           </div>
 
           <button type="button" onClick={signInWithGoogle} disabled={googleLoading}
-            className="flex w-full items-center justify-center gap-3 rounded-lg border border-[rgba(0,0,0,0.08)] bg-white py-3 text-[14px] font-medium text-[#78716C] transition-all hover:border-[rgba(0,0,0,0.12)] hover:text-[#1C1917] disabled:opacity-50">
+            className="flex w-full items-center justify-center gap-3 rounded-lg border border-[rgba(255,255,255,0.12)] bg-[#0D1626] py-3 text-[14px] font-medium text-[#8A93A8] transition-all hover:border-[rgba(255,255,255,0.12)] hover:text-[#E7ECF6] disabled:opacity-50">
             {googleLoading ? <Loader2 size={16} className="animate-spin" /> : (
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1Z" fill="#4285F4"/>
@@ -67,16 +67,16 @@ export default function LoginPage() {
           </button>
 
           <div className="relative my-6 flex items-center gap-3">
-            <div className="flex-1 border-t border-[rgba(0,0,0,0.06)]" />
-            <span className="text-[11px] font-medium text-[#A8A29E]">or</span>
-            <div className="flex-1 border-t border-[rgba(0,0,0,0.06)]" />
+            <div className="flex-1 border-t border-[rgba(255,255,255,0.09)]" />
+            <span className="text-[11px] font-medium text-[#616B80]">or</span>
+            <div className="flex-1 border-t border-[rgba(255,255,255,0.09)]" />
           </div>
 
           <form onSubmit={signIn} className="space-y-4">
             <div>
               <label htmlFor="email" className="label">Email address</label>
               <div className="relative">
-                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A8A29E] pointer-events-none" />
+                <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#616B80] pointer-events-none" />
                 <input id="email" type="email" placeholder="you@company.com" value={email} onChange={e => setEmail(e.target.value)}
                   className="input-field pl-10" autoComplete="email" required />
               </div>
@@ -84,27 +84,27 @@ export default function LoginPage() {
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <label htmlFor="password" className="label mb-0">Password</label>
-                <Link href="#" className="text-[11px] font-medium text-[#A8A29E] hover:text-[#C73B2A] transition-colors">Forgot?</Link>
+                <Link href="#" className="text-[11px] font-medium text-[#616B80] hover:text-[#38BDF8] transition-colors">Forgot?</Link>
               </div>
               <div className="relative">
-                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#A8A29E] pointer-events-none" />
+                <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#616B80] pointer-events-none" />
                 <input id="password" type={showPassword ? "text" : "password"} placeholder="Enter your password"
                   value={password} onChange={e => setPassword(e.target.value)} className="input-field pl-10 pr-10" autoComplete="current-password" required />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A8A29E] hover:text-[#78716C]" aria-label={showPassword ? "Hide" : "Show"}>
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#616B80] hover:text-[#8A93A8]" aria-label={showPassword ? "Hide" : "Show"}>
                   {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                 </button>
               </div>
             </div>
             <button type="submit" disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#C73B2A] to-[#E85D3A] py-3 text-[14px] font-medium text-white shadow-lg shadow-[#C73B2A]/20 transition-all hover:shadow-xl disabled:opacity-50">
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#38BDF8] to-[#818CF8] py-3 text-[14px] font-medium text-white shadow-lg shadow-[#38BDF8]/20 transition-all hover:shadow-xl disabled:opacity-50">
               {loading ? <Loader2 size={16} className="animate-spin" /> : <>Sign In <ArrowRight size={16} /></>}
             </button>
           </form>
 
-          <p className="mt-6 text-center text-[13px] text-[#A8A29E]">
+          <p className="mt-6 text-center text-[13px] text-[#616B80]">
             Don't have an account?{" "}
-            <Link href="/signup" className="font-medium text-[#C73B2A] hover:opacity-80 transition-opacity">Create account</Link>
+            <Link href="/signup" className="font-medium text-[#38BDF8] hover:opacity-80 transition-opacity">Create account</Link>
           </p>
         </div>
       </motion.div>

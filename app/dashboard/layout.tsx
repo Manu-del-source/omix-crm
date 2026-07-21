@@ -20,29 +20,29 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, [router])
 
   if (checking) return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F8F6F3]">
-      <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#C73B2A] border-t-transparent" />
+    <div className="flex min-h-screen items-center justify-center bg-[#070B14]">
+      <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#38BDF8] border-t-transparent" />
     </div>
   )
 
   return (
-    <div className="flex min-h-screen bg-[#F8F6F3] text-[#1C1917]">
-      <div className="fixed inset-x-0 top-0 z-50 flex h-12 items-center justify-between border-b border-[rgba(0,0,0,0.06)] bg-white px-4 lg:hidden">
+    <div className="flex min-h-screen bg-[#070B14] text-[#E7ECF6]">
+      <div className="fixed inset-x-0 top-0 z-50 flex h-12 items-center justify-between border-b border-[rgba(255,255,255,0.09)] bg-[#070B14]/80 backdrop-blur-xl px-4 lg:hidden">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded bg-gradient-to-br from-[#C73B2A] to-[#E85D3A]">
+          <span className="flex h-6 w-6 items-center justify-center rounded bg-gradient-to-br from-[#38BDF8] to-[#818CF8]">
             <span className="text-white text-[9px] font-bold">O</span>
           </span>
-          <span className="text-[13px] font-bold text-[#1C1917]">Omix</span>
+          <span className="text-[13px] font-bold text-[#E7ECF6]">Omix</span>
         </Link>
         <button onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex h-8 w-8 items-center justify-center rounded-lg border border-[rgba(0,0,0,0.08)] text-[#78716C]">
+          className="flex h-8 w-8 items-center justify-center rounded-lg border border-[rgba(255,255,255,0.12)] text-[#8A93A8]">
           {mobileOpen ? <X size={16} /> : <Menu size={16} />}
         </button>
       </div>
       {mobileOpen && (
         <div className="fixed inset-0 z-40 flex pt-12 lg:hidden">
           <div className="flex-1 bg-black/20 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
-          <div className="w-64 border-l border-[rgba(0,0,0,0.06)] bg-white"><Sidebar /></div>
+          <div className="w-64 border-l border-[rgba(255,255,255,0.09)] bg-[#0A1120]"><Sidebar /></div>
         </div>
       )}
       <Sidebar />

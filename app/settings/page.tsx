@@ -33,8 +33,8 @@ export default function SettingsPage() {
   return (
     <div className="p-6 lg:p-8">
       <div className="mb-6">
-        <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-tight"><Settings size={22} className="text-[#C73B2A]" /> Settings</h1>
-        <p className="mt-0.5 text-[14px] text-[#78716C]">Manage your account</p>
+        <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-tight"><Settings size={22} className="text-[#38BDF8]" /> Settings</h1>
+        <p className="mt-0.5 text-[14px] text-[#8A93A8]">Manage your account</p>
       </div>
       <motion.div variants={stagger} initial="hidden" animate="show" className="mx-auto max-w-2xl space-y-5">
         <motion.div variants={fadeUp} className="card p-6">
@@ -42,9 +42,9 @@ export default function SettingsPage() {
           <div className="space-y-3">
             <div>
               <label className="label">Email</label>
-              <div className="flex items-center gap-2 rounded-lg border border-[rgba(0,0,0,0.06)] bg-white px-3.5 py-2.5">
-                <Mail size={14} className="text-[#A8A29E]" />
-                <span className="text-[13px] text-[#78716C]">{email || "—"}</span>
+              <div className="flex items-center gap-2 rounded-lg border border-[rgba(255,255,255,0.09)] bg-[#0D1626] px-3.5 py-2.5">
+                <Mail size={14} className="text-[#616B80]" />
+                <span className="text-[13px] text-[#8A93A8]">{email || "—"}</span>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function SettingsPage() {
         <motion.div variants={fadeUp} className="card p-6">
           <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold"><Shield size={16} className="text-amber-500" /> Business</h2>
           <input placeholder="Your Company Ltd" className="input-field !rounded-lg text-[13px]" />
-          <button onClick={() => toast.success("Saved!")} className="mt-3 rounded-lg bg-[#C73B2A] px-5 py-2.5 text-[13px] font-medium text-white">Save</button>
+          <button onClick={() => toast.success("Saved!")} className="mt-3 rounded-lg bg-[#38BDF8] px-5 py-2.5 text-[13px] font-medium text-white">Save</button>
         </motion.div>
         <motion.div variants={fadeUp} className="card p-6">
           <h2 className="mb-4 flex items-center gap-2 text-[15px] font-semibold"><Lock size={16} className="text-purple-500" /> Security</h2>
@@ -67,7 +67,7 @@ export default function SettingsPage() {
         </motion.div>
         <motion.div variants={fadeUp} className="rounded-xl border border-red-200/50 bg-red-50/50 p-5">
           <h2 className="mb-2 text-[15px] font-semibold text-red-600">Danger Zone</h2>
-          <p className="mb-3 text-[13px] text-[#78716C]">Once you delete your account, there is no going back.</p>
+          <p className="mb-3 text-[13px] text-[#8A93A8]">Once you delete your account, there is no going back.</p>
           <button className="rounded-lg border border-red-300 px-5 py-2.5 text-[13px] font-medium text-red-600 transition-all hover:bg-red-100">Delete Account</button>
         </motion.div>
       </motion.div>

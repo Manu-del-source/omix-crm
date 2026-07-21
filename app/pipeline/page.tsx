@@ -48,9 +48,9 @@ export default function PipelinePage() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Sales Pipeline</h1>
-          <p className="mt-0.5 text-[14px] text-[#78716C]">Drag cards between columns</p>
+          <p className="mt-0.5 text-[14px] text-[#8A93A8]">Drag cards between columns</p>
         </div>
-        <Link href="/leads/new" className="flex items-center gap-1.5 rounded-lg bg-[#C73B2A] px-3.5 py-2 text-[13px] font-medium text-white"><Plus size={15} /> Add Lead</Link>
+        <Link href="/leads/new" className="flex items-center gap-1.5 rounded-lg bg-[#38BDF8] px-3.5 py-2 text-[13px] font-medium text-white"><Plus size={15} /> Add Lead</Link>
       </div>
 
       {loading ? (
@@ -63,33 +63,33 @@ export default function PipelinePage() {
               return (
                 <motion.div key={stage} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: ci * 0.04 }}
                   className={`rounded-xl border ${cfg.bg}`}>
-                  <div className="flex items-center justify-between border-b border-[rgba(0,0,0,0.04)] px-3.5 py-3">
+                  <div className="flex items-center justify-between border-b border-[rgba(255,255,255,0.06)] px-3.5 py-3">
                     <div className="flex items-center gap-1.5">
                       <span className={`h-1.5 w-1.5 rounded-full ${cfg.dot}`} />
                       <h2 className={`text-[12px] font-semibold ${cfg.color}`}>{stage}</h2>
                     </div>
-                    <span className="rounded-full bg-[rgba(0,0,0,0.04)] px-1.5 py-0.5 text-[11px] text-[#A8A29E]">{columns[stage]?.length || 0}</span>
+                    <span className="rounded-full bg-[rgba(255,255,255,0.06)] px-1.5 py-0.5 text-[11px] text-[#616B80]">{columns[stage]?.length || 0}</span>
                   </div>
                   <Droppable droppableId={stage}>
                     {(provided, snapshot) => (
                       <div ref={provided.innerRef} {...provided.droppableProps}
-                        className={`min-h-[160px] space-y-2 p-2.5 transition-colors ${snapshot.isDraggingOver ? "bg-[rgba(0,0,0,0.02)]" : ""}`}>
+                        className={`min-h-[160px] space-y-2 p-2.5 transition-colors ${snapshot.isDraggingOver ? "bg-[rgba(255,255,255,0.04)]" : ""}`}>
                         {columns[stage]?.map((lead, idx) => (
                           <Draggable draggableId={String(lead.id)} index={idx} key={lead.id}>
                             {(provided, snapshot) => (
                               <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
-                                className={`group rounded-xl border border-[rgba(0,0,0,0.06)] bg-white p-3.5 transition ${
-                                  snapshot.isDragging ? "shadow-lg border-[#C73B2A]/30 scale-[1.02]" : "hover:border-[#C73B2A]/20"
+                                className={`group rounded-xl border border-[rgba(255,255,255,0.09)] bg-[#0D1626] p-3.5 transition ${
+                                  snapshot.isDragging ? "shadow-lg border-[#38BDF8]/30 scale-[1.02]" : "hover:border-[#38BDF8]/20"
                                 }`}>
                                 <div className="flex items-start justify-between gap-2">
                                   <div className="flex items-center gap-2.5">
-                                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#FEF2F0] text-[10px] font-semibold text-[#C73B2A]">{lead.name?.[0]}</div>
+                                    <div className="flex h-6 w-6 items-center justify-center rounded-md bg-[#0C2033] text-[10px] font-semibold text-[#38BDF8]">{lead.name?.[0]}</div>
                                     <div>
-                                      <p className="text-[13px] font-medium text-[#1C1917]">{lead.name}</p>
-                                      {lead.company && <p className="text-[11px] text-[#A8A29E]">{lead.company}</p>}
+                                      <p className="text-[13px] font-medium text-[#E7ECF6]">{lead.name}</p>
+                                      {lead.company && <p className="text-[11px] text-[#616B80]">{lead.company}</p>}
                                     </div>
                                   </div>
-                                  <Link href={`/leads/${lead.id}`} className="shrink-0 opacity-0 group-hover:opacity-100 transition"><ExternalLink size={11} className="text-[#A8A29E] hover:text-[#1C1917]" /></Link>
+                                  <Link href={`/leads/${lead.id}`} className="shrink-0 opacity-0 group-hover:opacity-100 transition"><ExternalLink size={11} className="text-[#616B80] hover:text-[#E7ECF6]" /></Link>
                                 </div>
                               </div>
                             )}
@@ -97,7 +97,7 @@ export default function PipelinePage() {
                         ))}
                         {provided.placeholder}
                         {(!columns[stage] || columns[stage].length === 0) && !snapshot.isDraggingOver && (
-                          <div className="flex items-center justify-center py-6 text-[11px] text-[#A8A29E]">Drop here</div>
+                          <div className="flex items-center justify-center py-6 text-[11px] text-[#616B80]">Drop here</div>
                         )}
                       </div>
                     )}

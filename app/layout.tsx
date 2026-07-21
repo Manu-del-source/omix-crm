@@ -32,7 +32,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} bg-[#F8F6F3]`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} bg-[#070B14]`}>
       <body className="antialiased">
         {children}
         <Toaster position="top-center" richColors />
