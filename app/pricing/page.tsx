@@ -28,54 +28,54 @@ const FAQS = [
 export default function PricingPage() {
   const [open, setOpen] = useState<number | null>(null)
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#0A0A0A] text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#F8F6F3] text-[#1C1917]">
       <SiteNav />
       <PageHero label="Pricing" heading="Simple, transparent pricing" sub="Billed in Kenyan Shillings. Free trial on every plan." />
-      <section className="section border-t border-white/[0.06]">
+      <section className="section border-t border-[rgba(0,0,0,0.06)]">
         <Container>
           <motion.div variants={s} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid gap-6 lg:grid-cols-3">
             {PLANS.map(p => (
               <motion.div key={p.name} variants={it} whileHover={{ y: p.featured ? -8 : -4 }}
                 className={`relative flex flex-col rounded-[20px] border p-8 transition-all sm:p-10 ${
-                  p.featured ? "border-[#FACC15]/20 bg-[#171717] shadow-[0_0_80px_rgba(250,204,21,0.06)] ring-1 ring-[#FACC15]/10" : "card"
+                  p.featured ? "border-[#C73B2A]/30 bg-white shadow-[0_8px_40px_rgba(199,59,42,0.12)] ring-1 ring-[#C73B2A]/15" : "card"
                 }`}>
-                {p.featured && <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-[#FACC15] px-4 py-1.5 text-[12px] font-bold text-black shadow-lg"><Zap size={10} fill="black" /> Most Popular</span>}
-                <h3 className="text-[16px] font-bold text-white">{p.name}</h3>
-                <p className="mt-1.5 text-[14px] text-[#525252]">{p.desc}</p>
-                <div className="my-7 border-b border-white/[0.06] pb-7">
-                  <span className="text-[38px] font-extrabold tracking-tight text-white">{p.price}</span>
-                  <span className="ml-1 text-[13px] text-[#525252]">{p.per}</span>
+                {p.featured && <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#C73B2A] to-[#E85D3A] px-4 py-1.5 text-[12px] font-bold text-white shadow-lg"><Zap size={10} fill="white" /> Most Popular</span>}
+                <h3 className="text-[16px] font-bold text-[#1C1917]">{p.name}</h3>
+                <p className="mt-1.5 text-[14px] text-[#78716C]">{p.desc}</p>
+                <div className="my-7 border-b border-[rgba(0,0,0,0.06)] pb-7">
+                  <span className="text-[38px] font-extrabold tracking-tight text-[#1C1917]">{p.price}</span>
+                  <span className="ml-1 text-[13px] text-[#A8A29E]">{p.per}</span>
                 </div>
                 <ul className="mb-8 flex-1 space-y-3.5">
-                  {p.perks.map(f => <li key={f} className="flex items-center gap-3 text-[14px] text-[#A3A3A3]"><Check size={14} className={p.featured ? "text-[#FACC15]" : "text-[#525252]"}/>{f}</li>)}
+                  {p.perks.map(f => <li key={f} className="flex items-center gap-3 text-[14px] text-[#57534E]"><Check size={14} className={p.featured ? "text-[#C73B2A]" : "text-[#A8A29E]"}/>{f}</li>)}
                 </ul>
-                <Link href={p.href} className={`flex items-center justify-center rounded-[12px] py-3.5 text-[14px] font-bold transition-all ${p.featured ? "bg-[#FACC15] text-black hover:bg-[#FDE68A]" : "border border-white/[0.1] text-[#A3A3A3] hover:border-white/[0.2] hover:text-white"}`}>{p.cta}</Link>
+                <Link href={p.href} className={`flex items-center justify-center rounded-[12px] py-3.5 text-[14px] font-bold transition-all ${p.featured ? "bg-gradient-to-r from-[#C73B2A] to-[#E85D3A] text-white hover:shadow-lg hover:shadow-[#C73B2A]/25" : "border border-[rgba(0,0,0,0.1)] text-[#78716C] hover:border-[rgba(0,0,0,0.2)] hover:text-[#1C1917]"}`}>{p.cta}</Link>
               </motion.div>
             ))}
           </motion.div>
         </Container>
       </section>
-      <section className="section border-t border-white/[0.06]">
+      <section className="section border-t border-[rgba(0,0,0,0.06)]">
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-[340px_1fr] lg:gap-20">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: E }}>
               <span className="section-label">FAQ</span>
-              <h2 className="mt-4 h3 text-white">Pricing questions</h2>
+              <h2 className="mt-4 h3 text-[#1C1917]">Pricing questions</h2>
             </motion.div>
-            <div className="divide-y divide-white/[0.05]">
+            <div className="divide-y divide-[rgba(0,0,0,0.06)]">
               {FAQS.map((f, i) => {
                 const isOpen = open === i
                 return (
                   <div key={f.q}>
                     <button type="button" onClick={() => setOpen(isOpen ? null : i)}
                       className="flex w-full items-center justify-between gap-8 py-6 text-left">
-                      <span className={`text-[16px] font-semibold transition-colors ${isOpen ? "text-white" : "text-[#A3A3A3]"}`}>{f.q}</span>
+                      <span className={`text-[16px] font-semibold transition-colors ${isOpen ? "text-[#1C1917]" : "text-[#57534E]"}`}>{f.q}</span>
                       <motion.span animate={{ rotate: isOpen ? 45 : 0 }} transition={{ duration: 0.2 }}
-                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all ${isOpen ? "border-[#FACC15]/25 bg-[#FACC15]/[.08] text-[#FACC15]" : "border-white/[0.08] text-[#525252]"}`}>
+                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-all ${isOpen ? "border-[#C73B2A]/25 bg-[#C73B2A]/[.08] text-[#C73B2A]" : "border-[rgba(0,0,0,0.1)] text-[#A8A29E]"}`}>
                         <Plus size={14} />
                       </motion.span>
                     </button>
-                    {isOpen && <p className="pb-6 text-[16px] leading-relaxed text-[#525252]">{f.a}</p>}
+                    {isOpen && <p className="pb-6 text-[16px] leading-relaxed text-[#78716C]">{f.a}</p>}
                   </div>
                 )
               })}

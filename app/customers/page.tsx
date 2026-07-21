@@ -21,36 +21,36 @@ const INDUSTRIES = ["Real Estate", "Financial Services", "SACCO & Co-ops", "Logi
 
 export default function CustomersPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#0A0A0A] text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#F8F6F3] text-[#1C1917]">
       <SiteNav />
       <PageHero label="Customers" heading="Trusted by teams across East Africa"
         sub="Hundreds of sales teams use Omix CRM every day to track leads, manage pipelines, and close more deals." />
 
-      <section className="section border-t border-white/[0.06]">
+      <section className="section border-t border-[rgba(0,0,0,0.06)]">
         <Container>
           <p className="mb-6 text-center section-label">Industries using Omix CRM</p>
           <div className="flex flex-wrap justify-center gap-3">
-            {INDUSTRIES.map(ind => <span key={ind} className="rounded-full border border-white/[0.07] bg-white/[0.03] px-4 py-2 text-[14px] text-[#737373]">{ind}</span>)}
+            {INDUSTRIES.map(ind => <span key={ind} className="rounded-full border border-[rgba(0,0,0,0.08)] bg-white px-4 py-2 text-[14px] text-[#78716C]">{ind}</span>)}
           </div>
         </Container>
       </section>
 
-      <section className="section border-t border-white/[0.06]">
+      <section className="section border-t border-[rgba(0,0,0,0.06)]">
         <Container>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: E }} className="mb-12">
             <span className="section-label">Stories</span>
-            <h2 className="mt-4 h2 text-white">What our customers say</h2>
+            <h2 className="mt-4 h2 text-[#1C1917]">What our customers say</h2>
           </motion.div>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {TESTIMONIALS.map(t => (
               <motion.div key={t.i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 transition={{ duration: 0.65, ease: E }} whileHover={{ y: -5 }}
                 className="card flex flex-col p-8 hover:shadow-lg">
-                <div className="mb-5 flex gap-1">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={13} className="fill-[#FACC15] text-[#FACC15]" />)}</div>
-                <p className="flex-1 text-[15px] leading-relaxed text-[#A3A3A3]">&ldquo;{t.q}&rdquo;</p>
-                <div className="mt-6 flex items-center gap-3 border-t border-white/[0.06] pt-5">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/[0.07] text-[11px] font-bold text-white">{t.i}</div>
-                  <div><p className="text-[13px] font-semibold text-white">{t.name}</p><p className="text-[12px] text-[#525252]">{t.role}</p></div>
+                <div className="mb-5 flex gap-1">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={13} className="fill-amber-400 text-amber-400" />)}</div>
+                <p className="flex-1 text-[15px] leading-relaxed text-[#78716C]">&ldquo;{t.q}&rdquo;</p>
+                <div className="mt-6 flex items-center gap-3 border-t border-[rgba(0,0,0,0.06)] pt-5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#C73B2A] to-[#E85D3A] text-[11px] font-bold text-white">{t.i}</div>
+                  <div><p className="text-[13px] font-semibold text-[#1C1917]">{t.name}</p><p className="text-[12px] text-[#A8A29E]">{t.role}</p></div>
                 </div>
               </motion.div>
             ))}
